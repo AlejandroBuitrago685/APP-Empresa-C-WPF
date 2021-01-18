@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using XMLIntro.XML;
 
 namespace XMLIntro
 {
@@ -22,7 +23,7 @@ namespace XMLIntro
     public partial class MainWindow : Window
     {
 
-        private XDocument xml = XDocument.Load("../../XML/XMLProducto.xml");
+        private XDocument xml = XDocument.Load("../../XML/XMLFile1.xml");
         public MainWindow()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace XMLIntro
 
         private void InitCategoriaCMB()
         {
-            var listaCategorias = xml.Root.Elements("Categoria").Attributes("idCategoria");
+            var listaCategorias = xml.Root.Elements("Categoria").Attributes("IdCategoria");
             for(int i=0; i < listaCategorias.Count(); i++)
             {
                 TipoCMB.Items.Add(listaCategorias.ElementAt(i).Value);
@@ -55,6 +56,39 @@ namespace XMLIntro
             nuevaCat.Add(nuevaMarca);
             xml.Root.Add(nuevaCat);
             xml.Save("../../XML/XMLProducto.xml");
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (categoryBox.IsVisible)
+            {
+                categoryBox.Visibility = Visibility.Hidden;
+                brandBox.Visibility = Visibility.Hidden;
+                brandCheck.IsEnabled = true;
+            } else
+            {
+                categoryBox.Visibility = Visibility.Visible;
+                brandBox.Visibility = Visibility.Visible;
+                brandCheck.IsEnabled = false;
+            }
+
+        }
+
+        private void brandCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            if (brandBox.IsVisible)
+            {
+                brandBox.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                brandBox.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            XMLHandler.AddXMLProduct(product);
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Productos>
+  <Categoria IdCategoria="Refrescos">
+    <Marca Nombre="Coca-Cola">
+      <Producto ProductRef="1364363" BottleType="Lata" Description="Lata 25cl ZERO" />
+      <Producto ProductRef="96775623" BottleType="Plástico" Description="Botella 2L Normal" />
+    </Marca>
+    <Marca Nombre="Fanta" />
+    <Marca Nombre="Pepsi" />
+    <Marca Nombre="RedBull" />
+    <Marca Nombre="Hacendado">
+      <Producto ProductRef="423423" BottleType="Lata" Description="50cl Naranja" />
+    </Marca>
+  </Categoria>
+  <Categoria IdCategoria="Cerveza">
+    <Marca Nombre="Mahou" />
+    <Marca Nombre="San Miguel" />
+    <Marca Nombre="Alhambra" />
+    <Marca Nombre="Cruzcampo" />
+  </Categoria>
+  <Categoria IdCategoria="Leche">
+    <Marca Nombre="Puleva" />
+    <Marca Nombre="Pascual" />
+    <Marca Nombre="Central Asturiana" />
+    <Marca Nombre="PMI" />
+  </Categoria>
+  <Categoria IdCategoria="Agua">
+    <Marca Nombre="Lanjaron" />
+    <Marca Nombre="AquaBona" />
+  </Categoria>
+  <Categoria IdCategoria="Gaseosa">
+    <Marca Nombre="LaCasera">
+      <Producto ProductRef="423443" BottleType="Plástico" Description="1L Sin azucar" />
+    </Marca>
+  </Categoria>
+</Productos>
