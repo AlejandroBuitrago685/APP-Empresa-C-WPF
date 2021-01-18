@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Productos>
+  <Categoria idCategoria="Todoterreno">
+    <Marca Nombre="Opel" />
+    <Marca Nombre="BMW" />
+    <Marca Nombre="Mercedes" />
+    <Marca Nombre="Audi" />
+    <Marca Nombre="Mazda" />
+  </Categoria>
+  <Categoria idCategoria="Deportivos">
+    <Marca Nombre="Ferrari" />
+    <Marca Nombre="Lamborghini" />
+    <Marca Nombre="Maserati" />
+    <Marca Nombre="Konniseg" />
+  </Categoria>
+  <Categoria idCategoria="Familiar">
+    <Marca Nombre="Peugueot" />
+  </Categoria>
+</Productos>
