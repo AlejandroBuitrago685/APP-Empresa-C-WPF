@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,23 @@ namespace XMLIntro.XML
                 xml.Root.Add(xmlCategory);
             }
         
+        }
+        public static ObservableCollection<Product> LoadProducts()
+        {
+            ObservableCollection<Product> productList = new ObservableCollection<Product>();
+            LoadXML();
+            var listaProductosXML = xml.Root.Elements("Categoria").Elements("Marca").Elements("Producto");
+            foreach (XElement productXML in listaProductosXML)
+            {
+                product = new Product();
+                product.productRef = productXML.Attribute("ProductRef").Value;
+                product.bottleType = productXML.Attribute("BottleType").Value;
+                product.description = productXML.Attribute("Description").Value;
+                product.brand = productXML.Parent.Attribute("Nombre").Value;
+                product.category = productXML.Parent.Parent.Attribute("IdCategoria").Value;
+                productList.Add(product);
+            }
+            return productList;
         }
     }
 }

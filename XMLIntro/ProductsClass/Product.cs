@@ -18,6 +18,11 @@ namespace XMLIntro.ProductsClass
         {
         }
 
+        public String GetAllValues()
+        {
+            return productRef + " " + brand + " " + description + " " + bottleType;
+        }
+
         public object Clone()
         {
             throw new NotImplementedException();

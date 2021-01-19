@@ -9,7 +9,7 @@
 
 
     <StackPanel Margin="5" Background="AliceBlue" Orientation="Vertical">
-        <TextBlock Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="20" Margin="10" FontWeight="Bold"/>
+        <TextBlock Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="20" Margin="210,10,209,10" FontWeight="Bold"/>
         <Grid Height="471" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -45,7 +45,7 @@
         </Grid>
 
         <Button Content="Aceptar" Margin="200,0,200,20" Click="Button_Click_1"/>
-        <Button Content="Cancelar" Margin="200,0,200,20"/>
+        <Button Content="Cancelar" Margin="200,0,200,0"/>
 
     </StackPanel>
 

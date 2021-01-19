@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using XMLIntro.Pages;
 using XMLIntro.XML;
 
 namespace XMLIntro
@@ -88,7 +89,7 @@ namespace XMLIntro
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            XMLHandler.AddXMLProduct(product);
+            //XMLHandler.AddXMLProduct(product);
         }
     }
 }
