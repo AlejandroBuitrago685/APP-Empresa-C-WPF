@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proyecto_Alejandro_Buitrago.ProductClass;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -11,19 +12,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
-using XMLIntro.ProductsClass;
 
-namespace XMLIntro.Pages
+namespace proyecto_Alejandro_Buitrago.Pages
 {
     /// <summary>
     /// Lógica de interacción para ProductsGrid.xaml
     /// </summary>
     public partial class ProductsGrid : Page
     {
+
         ProductHandler productHandler;
-        private XDocument xml = XDocument.Load("../../XML/XMLFile1.xml");
+        private XDocument xml = XDocument.Load("../../XML/xml.xml");
         ObservableCollection<Product> listaFiltrada;
 
         public ProductsGrid(ProductHandler productHandler)
@@ -36,23 +38,26 @@ namespace XMLIntro.Pages
 
         private void InitCategoryCombo()
         {
-            categoryCMB.Items.Add("Todo...");
-            var listaCategoriasXML = xml.Root.Elements("Categoria").Attributes("IdCategoria");
-            foreach(XAttribute categoriaXML in listaCategoriasXML)
+            categoryCMB.Items.Add("Todas...");
+            var listaCategoriasXML = xml.Root.Elements("Tipo").Attributes("IdTipo");
+            foreach (XAttribute categoriaXML in listaCategoriasXML)
             {
                 categoryCMB.Items.Add(categoriaXML.Value);
             }
             categoryCMB.SelectedIndex = 0;
         }
 
+
         private void UpdateProductList()
         {
+            productHandler.UpdateProductList();
             categoryCMB.SelectedIndex = 0;
             busquedaTextBoz.Text = "";
             listaFiltrada = new ObservableCollection<Product>(productHandler.productList);
             MyDataGrid.ItemsSource = productHandler.productList;
             MyDataGrid.DataContext = productHandler.productList;
             MyDataGrid.Items.Refresh();
+
         }
 
         private void categoryCMB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,13 +65,14 @@ namespace XMLIntro.Pages
             if (categoryCMB.SelectedIndex == 0)
             {
                 UpdateProductList();
-            } else
+            }
+            else
             {
                 listaFiltrada.Clear();
 
                 foreach (Product product in productHandler.productList)
                 {
-                    if (product.category.Equals((string)categoryCMB.SelectedItem))
+                    if (product.tipo.Equals((string)categoryCMB.SelectedItem))
                     {
                         listaFiltrada.Add(product);
                     }
@@ -75,7 +81,7 @@ namespace XMLIntro.Pages
                 MyDataGrid.DataContext = listaFiltrada;
                 MyDataGrid.Items.Refresh();
             }
-           
+
         }
 
         private void busquedaTextBoz_TextChanged(object sender, TextChangedEventArgs e)
@@ -111,4 +117,6 @@ namespace XMLIntro.Pages
             UpdateProductList();
         }
     }
+    
+    
 }

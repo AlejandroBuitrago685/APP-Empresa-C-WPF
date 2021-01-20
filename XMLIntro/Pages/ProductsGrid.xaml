@@ -27,7 +27,6 @@
                 <DataGridTextColumn Header="Marca" Binding="{Binding brand}"/>
                 <DataGridTextColumn Header="Envase" Binding="{Binding bottleType}"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding description}"/>
-                
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

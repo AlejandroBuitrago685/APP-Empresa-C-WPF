@@ -1,4 +1,6 @@
-﻿using System;
+﻿using proyecto_Alejandro_Buitrago.Pages;
+using proyecto_Alejandro_Buitrago.ProductClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,22 @@ namespace proyecto_Alejandro_Buitrago
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        ProductHandler productHandler = new ProductHandler();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyNavigationFrame.NavigationService.Navigate(new Inicio());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MyNavigationFrame.NavigationService.Navigate(new ProductsGrid(productHandler));
         }
     }
 }
