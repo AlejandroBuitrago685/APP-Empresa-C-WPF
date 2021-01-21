@@ -39,5 +39,10 @@ namespace proyecto_Alejandro_Buitrago
         {
             MyNavigationFrame.NavigationService.Navigate(new ProductsGrid(productHandler));
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MyNavigationFrame.NavigationService.Navigate(new AddProduct());
+        }
     }
 }

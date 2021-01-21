@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:proyecto_Alejandro_Buitrago"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="900">
+        Title="MainWindow" Height="730" Width="900">
     <StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Inicio" Margin="20" Width="100" Height="30" Click="Button_Click"/>
-            <Button Content="Añadir" Margin="20" Width="100" Height="30"/>
+            <Button Content="Añadir" Margin="20" Width="100" Height="30" Click="Button_Click_2"/>
             <Button Content="Mostrar" Margin="20" Width="100" Height="30" Click="Button_Click_1"/>
         </StackPanel>
-        <Frame x:Name="MyNavigationFrame" NavigationUIVisibility="Hidden" Height="430" Margin="10"/>
+        <Frame x:Name="MyNavigationFrame" NavigationUIVisibility="Hidden" Height="600" Margin="10"/>
     </StackPanel>
 </Window>
