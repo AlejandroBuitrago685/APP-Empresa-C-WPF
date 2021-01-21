@@ -22,7 +22,7 @@ namespace proyecto_Alejandro_Buitrago
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         ProductHandler productHandler = new ProductHandler();
 
         public MainWindow()

@@ -1,4 +1,5 @@
-﻿using proyecto_Alejandro_Buitrago.ProductClass;
+﻿
+using proyecto_Alejandro_Buitrago.ProductClass;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace proyecto_Alejandro_Buitrago.XML
         private static XDocument xml;
         private static Product product;
         private static XElement xmlCategory;
+        private static XElement xmlMadera;
         private static void LoadXML()
         {
             xml = XDocument.Load("../../XML/xml.xml");
@@ -28,7 +30,9 @@ namespace proyecto_Alejandro_Buitrago.XML
             product = p;
             LoadXML();
             AddCategory();
+            AddMadera();
             SaveXML();
+           
         }
 
         private static void AddCategory() //Comprobar si la categoria ya existe
@@ -46,11 +50,13 @@ namespace proyecto_Alejandro_Buitrago.XML
                 else
                 {
                     xmlCategory = new XElement("Tipo", new XAttribute("IdTipo", product.tipo));
+                    xmlMadera = new XElement("Madera", new XAttribute("IdNombre", product.madera));
                     isNewCategory = true;
                 }
             }
             if (isNewCategory)
             {
+                xmlCategory.Add(xmlMadera);
                 xml.Root.Add(xmlCategory);
             }
 
@@ -63,7 +69,6 @@ namespace proyecto_Alejandro_Buitrago.XML
             foreach (XElement productXML in listaProductosXML)
             {
                 product = new Product();
-
                 product.referencia = productXML.Attribute("ProductRef").Value;
                 product.descripcion = productXML.Attribute("Descripcion").Value;
                 product.stock = int.Parse(productXML.Attribute("Stock").Value);
@@ -76,5 +81,29 @@ namespace proyecto_Alejandro_Buitrago.XML
             }
             return productList;
         }
+
+        private static void AddMadera()
+        {
+            bool isNewMadera = true;
+            foreach(XAttribute madera in xmlCategory.Elements().Attributes("IdNombre"))
+            {
+                if (madera.Value.Equals(product.madera))
+                {
+                    xmlMadera = madera.Parent;
+                    isNewMadera = false;
+                    break;
+                } else
+                {
+                    xmlMadera = new XElement("Madera", new XAttribute("IdNombre", product.madera));
+                    isNewMadera = true;   
+                }
+            }
+            if (isNewMadera)
+            {
+                xmlMadera.Add(xmlMadera);
+            }
+        }
     }
+
+
 }

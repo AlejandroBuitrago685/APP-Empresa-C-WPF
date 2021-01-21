@@ -48,6 +48,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             {
                 MarcaCMB.Items.Add(listaMarcas.ElementAt(i).Value);
             }
+
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -80,13 +81,18 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //XMLHandler.AddXMLProduct(Product);
+
+            //XMLHandler.AddXMLProduct(product);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void MarcaCMB_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            MainWindow.MyNavigationFrame.NavigationService.Navigate(new Inicio());
+            MedidaCMB.Items.Clear();
+            var listaMarcas = xml.Root.Elements("Tipo").ElementAt(TipoCMB.SelectedIndex).Element("Madera").Element("Producto").Attributes("Medida");
+            for (int i = 0; i < listaMarcas.Count(); i++)
+            {
+                MedidaCMB.Items.Add(listaMarcas.ElementAt(i).Value);
+            }
         }
-
     }
 }

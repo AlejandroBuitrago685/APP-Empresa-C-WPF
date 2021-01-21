@@ -121,6 +121,5 @@
   <ItemGroup>
     <Resource Include="XML\xml.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
