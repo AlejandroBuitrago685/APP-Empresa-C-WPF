@@ -50,14 +50,6 @@ namespace XMLIntro
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            XElement nuevaCat = new XElement("Categoria", new XAttribute("idCategoria","Familiar"));
-            XElement nuevaMarca = new XElement("Marca", new XAttribute("Nombre", "Peugueot"));
-            nuevaCat.Add(nuevaMarca);
-            xml.Root.Add(nuevaCat);
-            xml.Save("../../XML/XMLProducto.xml");
-        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -90,6 +82,7 @@ namespace XMLIntro
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //XMLHandler.AddXMLProduct(product);
+           
         }
     }
 }

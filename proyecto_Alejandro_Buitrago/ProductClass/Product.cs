@@ -19,6 +19,25 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
 
         public Product()
         {
+            this.referencia = "";
+            this.descripcion = "";
+            this.medida = "";
+            this.precio = 0;
+            this.fecha = DateTime.Now;
+            this.stock = 0;
+            this.tipo = "";
+            this.madera = "";
+        }
+        public Product(string referencia, string descripcion, string medida, float precio, DateTime fecha, int stock, string tipo, string madera)
+        {
+            this.referencia = referencia;
+            this.descripcion = descripcion;
+            this.medida = medida;
+            this.precio = precio;
+            this.fecha = fecha;
+            this.stock = stock;
+            this.tipo = tipo;
+            this.madera = madera;
         }
 
         public String GetAllValues()

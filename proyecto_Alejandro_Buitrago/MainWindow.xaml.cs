@@ -23,11 +23,13 @@ namespace proyecto_Alejandro_Buitrago
     public partial class MainWindow : Window
     {
 
-        ProductHandler productHandler = new ProductHandler();
+        public ProductHandler productHandler = new ProductHandler();
+        public static Frame myNavigationFrame;
 
         public MainWindow()
         {
             InitializeComponent();
+            myNavigationFrame = MyNavigationFrame;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

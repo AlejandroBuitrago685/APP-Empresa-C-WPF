@@ -21,6 +21,7 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
         public void UpdateProductList() { this.productList = XMLHandler.LoadProducts(); }
 
         public void AddProduct(Product product) { productList.Add(product); }
+
     }
 }
 

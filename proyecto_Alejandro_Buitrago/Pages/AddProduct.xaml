@@ -35,7 +35,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Referencia" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Margin="319,-6,319,5" Width="92"/>
-            <TextBox Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" Height="25" Margin="15,0,15,10"/>
+            <TextBox  x:Name="Ref" Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" Height="25" Margin="15,0,15,10"/>
 
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Tipo de producto " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="286,8,286,11" Width="158"/>
@@ -43,7 +43,7 @@
 
 
             <TextBox Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,6,10,7" Width="710" Height="34" x:Name="categoryBox" Visibility="Hidden"/>
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tipo de Madera " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Margin="292,5,292,7" Width="146"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tipo de Madera" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Margin="292,5,292,7" Width="146"/>
 
 
             <ComboBox Grid.Row="5" Grid.Column="0" x:Name="MarcaCMB" Margin="10" FontSize="20" HorizontalContentAlignment="Center" SelectionChanged="MarcaCMB_SelectionChanged_1"/>
@@ -52,28 +52,29 @@
 
             <TextBlock Grid.Row="6" Grid.Column="0" Text="Medida" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="328,2,332,3" Width="70"/>
             <ComboBox Grid.Row="7" Grid.Column="0" x:Name="MedidaCMB" Margin="10" FontSize="20" HorizontalContentAlignment="Center"/>
-
+            <TextBox Grid.Row="7" Grid.Column="0" x:Name="medidaBox" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,6,10,10" Width="710" Height="32" Visibility="Hidden"/>
 
             <TextBlock Grid.Row="8" Grid.Column="0" Text="Añade una descripción " FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="262,6,262,54" Width="206" Grid.RowSpan="2"/>
-            <TextBox Grid.Row="9" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,10,10" Width="700" Height="29"/>
+            <TextBox x:Name="Descripcion"  Grid.Row="9" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,10,10" Width="700" Height="29"/>
 
 
             <TextBlock Grid.Row="10" Grid.Column="0" Text="Precio" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="336,10,332,4" Width="62"/>
-            <TextBox Grid.Row="11" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,10,11" Width="700" Height="28"/>
+            <TextBox x:Name="Precio" Grid.Row="11" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,10,11" Width="700" Height="28"/>
 
 
             <TextBlock Grid.Row="12" Grid.Column="0" Text="Fecha de alta" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="306,4,303,10" Width="121"/>
-            <DatePicker Grid.Row="13" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,10,10,10" Width="700" Height="38"/>
+            <DatePicker x:Name="Fecha" Grid.Row="13" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,10,10,10" Width="700" Height="38"/>
 
 
             <TextBlock Grid.Row="14" Grid.Column="0" Text="Stock" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="340,10,341,4" Width="49"/>
-            <TextBox Grid.Row="15" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,10,11" Width="700" Height="28"/>
+            <TextBox x:Name="Stock" Grid.Row="15" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,19,10,11" Width="700" Height="28"/>
 
 
-            <CheckBox  x:Name="categoryCheck" Grid.Row="3" Grid.Column="1" Width="20" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="CheckBox_Checked" Margin="0,14,20,15" RenderTransformOrigin="-3.946,0.407"/>
-            <CheckBox  x:Name="brandCheck" Grid.Row="5" Grid.Column="1" Width="40" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="brandCheck_Checked" Margin="0,14,0,8"/>
+            <CheckBox x:Name="categoryCheck" Grid.Row="3" Grid.Column="1" Height="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="CheckBox_Checked" Margin="0,14,20,15" RenderTransformOrigin="-3.946,0.407"/>
+            <CheckBox x:Name="brandCheck"  Grid.Row="5" Grid.Column="1" Height="26" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="brandCheck_Checked" Margin="0,14,0,8" HorizontalAlignment="Right" Width="40"/>
+            <CheckBox x:Name="medidaCheck" Grid.Row="7" Grid.Column="1" Width="40" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="medidaCheck_Checked" Margin="0,14,0,8"/>
         </Grid>
-        <Button Content="Aceptar" Margin="200,20,200,10" Height="39"/>
+        <Button Content="Aceptar" Margin="200,20,200,10" Height="39" Click="Button_Click_1"/>
 
     </StackPanel>
 </Page>
