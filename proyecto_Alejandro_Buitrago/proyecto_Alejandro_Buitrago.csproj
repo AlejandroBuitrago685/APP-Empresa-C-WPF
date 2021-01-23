@@ -58,6 +58,9 @@
     <Compile Include="Pages\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ModydDelete.xaml.cs">
+      <DependentUpon>ModydDelete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductsGrid.xaml.cs">
       <DependentUpon>ProductsGrid.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Inicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ModydDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

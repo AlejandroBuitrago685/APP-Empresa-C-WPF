@@ -117,6 +117,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
+            
             String tipo = null;
             String madera = null;
             String medida = null;
@@ -161,9 +162,11 @@ namespace proyecto_Alejandro_Buitrago.Pages
             String referencia = Ref.Text;
             Product product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera);
             XMLHandler.AddXMLProduct(product);
+           
 
 
 
         }
+
     }
 }

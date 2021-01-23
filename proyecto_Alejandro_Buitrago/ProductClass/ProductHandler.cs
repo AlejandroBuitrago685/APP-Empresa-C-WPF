@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace proyecto_Alejandro_Buitrago.ProductClass
 {
+    
     public class ProductHandler
     {
-        public ObservableCollection<Product> productList { set; get; }
+        public  ObservableCollection<Product> productList { get; set; }
 
         public ProductHandler()
         {

@@ -8,7 +8,7 @@
         Title="MainWindow" Height="993.462" Width="900">
     <StackPanel>
         
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue">
             <Button Content="Inicio" Margin="20" Width="100" Height="30" Click="Button_Click"/>
             <Button Content="Añadir" Margin="20" Width="100" Height="30" Click="Button_Click_2"/>
             <Button Content="Mostrar" Margin="20" Width="100" Height="30" Click="Button_Click_1"/>

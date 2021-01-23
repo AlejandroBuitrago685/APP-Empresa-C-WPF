@@ -17,6 +17,8 @@ namespace proyecto_Alejandro_Buitrago.XML
         private static Product product;
         private static XElement xmlCategory;
         private static XElement xmlMadera;
+        private static XElement xmlMedida;
+
         private static void LoadXML()
         {
             xml = XDocument.Load("../../XML/xml.xml");
@@ -35,7 +37,7 @@ namespace proyecto_Alejandro_Buitrago.XML
             AddMadera();
             CrearProducto();
             SaveXML();
-            MessageBoxResult resultado = MessageBox.Show(p.referencia + p.madera + p.precio + p.tipo +p.medida, "Registro", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+            MessageBoxResult resultado = MessageBox.Show("Se ha agregado un nuevo producto: \n" + "Referencia: " + p.referencia + "\n" + "Tipo de madera: " + p.madera + "\n" + "Precio: " + p.precio + "\n" + "Tipo: " + p.tipo + "\n" + "Medida: " + p.medida + "\n" + "Stock: " + p.stock, "Registro de nuevo producto", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
         }
@@ -44,7 +46,7 @@ namespace proyecto_Alejandro_Buitrago.XML
         {
             XElement xmlProduct = new XElement("Producto", new XAttribute("ProductRef", product.referencia), new XAttribute("Medida", product.medida),
                  new XAttribute("Descripcion", product.descripcion), new XAttribute("Precio", product.precio),
-                 new XAttribute("Referencia", product.referencia), new XAttribute("Fecha", product.fecha), new XAttribute("Stock", product.stock));
+                 new XAttribute("Fecha", product.fecha), new XAttribute("Stock", product.stock));
             xmlMadera.Add(xmlProduct);
         }
 
@@ -115,9 +117,64 @@ namespace proyecto_Alejandro_Buitrago.XML
             }
             if (isNewMadera)
             {
-                xmlMadera.Add(xmlMadera);
+                
+                AddTipoMadera();
             }
         }
 
+        private static void AddTipoMadera()
+        {
+            var listaCategorias = xml.Root.Elements().Attributes("IdNombre");
+            bool isNewCategory = true;
+            foreach (XAttribute categoria in listaCategorias)
+            {
+                if (categoria.Value.Equals(product.madera))
+                {
+                    xmlCategory = categoria.Parent;
+                    isNewCategory = false;
+                    break;
+                }
+                else
+                {
+                    xmlMadera = new XElement("Madera", new XAttribute("IdNombre", product.madera));
+                    isNewCategory = true;
+                }
+            }
+            if (isNewCategory)
+            {
+                xmlCategory.Add(xmlMadera);
+            }
+
+        }
+
+        public static void DeleteProduct(String ReferenciaProducto)
+        {
+            LoadXML();
+            var listaRefXML = xml.Root.Elements("Tipo").Elements("Madera").Elements("Producto").Attributes("ProductRef");
+            foreach(XAttribute referencia in listaRefXML)
+            {
+                if(ReferenciaProducto == referencia.Value)
+                {
+                    referencia.Parent.Remove();
+                    break;
+                }
+            }
+            SaveXML();
+        }
+
+        public static void DeleteType(String NombreTipo)
+        {
+            LoadXML();
+            var listaTipoXML = xml.Root.Elements("Tipo").Attributes("IdTipo");
+            foreach (XAttribute tipo in listaTipoXML)
+            {
+                if (NombreTipo == tipo.Value)
+                {
+                    tipo.Parent.Remove();
+                    break;
+                }
+            }
+            SaveXML();
+        }
     }
 }

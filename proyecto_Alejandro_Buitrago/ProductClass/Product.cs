@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
         public String tipo { set; get; }
         public String madera { set; get; }
 
+
+        public static ObservableCollection<Product> listaProductos = new ObservableCollection<Product>();
         public Product()
         {
             this.referencia = "";

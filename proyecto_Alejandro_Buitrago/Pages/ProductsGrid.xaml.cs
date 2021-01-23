@@ -1,4 +1,5 @@
 ﻿using proyecto_Alejandro_Buitrago.ProductClass;
+using proyecto_Alejandro_Buitrago.XML;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -107,14 +108,39 @@ namespace proyecto_Alejandro_Buitrago.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Product product = (Product)MyDataGrid.SelectedItem;
-            //MainWindow.MyNavigationFrame.NavigationService.Navigate(new PaginationProgressEventArgs de modificar());
+            MainWindow.myNavigationFrame.NavigationService.Navigate(new ModydDelete(product));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Product product = (Product)MyDataGrid.SelectedItem;
-            //XMLHandler.RemoveProduct(product.productRef);
+            XMLHandler.DeleteProduct(product.referencia);
             UpdateProductList();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere borrar toda este tipo?",
+                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+
+            switch (resultado)
+            {
+                case MessageBoxResult.Yes:
+                    
+                    Product product = (Product)MyDataGrid.SelectedItem;
+                    XMLHandler.DeleteType(product.tipo);
+                    UpdateProductList();
+                    MessageBox.Show("Tipo borrado con éxito");
+                    break;
+
+                case MessageBoxResult.Cancel:
+                    break;
+            }
+
+
+           
         }
     }
     
