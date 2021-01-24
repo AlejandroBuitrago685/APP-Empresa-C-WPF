@@ -10,7 +10,7 @@
 
     <StackPanel Margin="5,5,5,0" Background="White" Orientation="Vertical">
         <TextBlock x:Name="titulo" Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="20" Margin="280,10,326,0" FontWeight="Bold"/>
-        <Grid x:Name="productGrid" Height="702" Margin="0,20">
+        <Grid x:Name="productGrid" Height="702" Margin="0,20,0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>
@@ -74,7 +74,8 @@
             <CheckBox x:Name="brandCheck"  Grid.Row="5" Grid.Column="1" Height="26" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="brandCheck_Checked" Margin="0,16,0,10" HorizontalAlignment="Right" Width="40"/>
             <CheckBox x:Name="medidaCheck" Grid.Row="7" Grid.Column="1" Width="40" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="medidaCheck_Checked" Margin="0,17,0,12"/>
         </Grid>
-        <Button Content="Aceptar" Margin="200,20,200,10" Height="39" Click="Button_Click_1"/>
+        <TextBlock x:Name="Warning" Text="Debe rellenar todos los campos" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15" Visibility="Hidden"/>
+        <Button Content="Aceptar" Margin="200,5,200,10" Height="39" Click="Button_Click_1"/>
 
     </StackPanel>
 </Page>

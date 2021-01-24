@@ -30,6 +30,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
         public Product product1;
         int posicion;
         public bool modificacion;
+        public bool validacion = false;
 
         public AddProduct(String tituloPrincipal, ProductHandler productHandler, Product product, int pos)
         {
@@ -142,7 +143,14 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Ref.Text.Length !=0)
+
+            Validation();
+
+            if (validacion)
+            {
+                Warning.Visibility = Visibility.Visible;
+            }
+            else
             {
                 if (modificacion)
                 {
@@ -202,8 +210,40 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     XMLHandler.AddXMLProduct(product);
 
                 }
+             
             }
             
+        }
+
+        public void Validation()
+        {
+
+            if (Ref.Text.Length == 0 || Descripcion.Text.Length == 0 || Precio.Text.Length == 0 || Stock.Text.Length == 0 || Fecha.Text.Length == 0)
+            {
+                validacion = true;
+            }
+
+            else if ((bool)categoryCheck.IsChecked & (brandBox.Text.Length == 0 || medidaBox.Text.Length == 0 || categoryBox.Text.Length == 0))
+            {
+                validacion = true;
+            }
+            else if ((bool) brandCheck.IsChecked & (TipoCMB.SelectedIndex < 0 || brandBox.Text.Length == 0 || medidaBox.Text.Length == 0))
+            {
+                validacion = true;
+            }
+            else if ((bool) medidaCheck.IsChecked & (TipoCMB.SelectedIndex < 0 || MarcaCMB.SelectedIndex < 0 || medidaBox.Text.Length == 0))
+            {
+                validacion = true;
+            } 
+            else if (TipoCMB.SelectedIndex < 0 & MarcaCMB.SelectedIndex < 0 & MedidaCMB.SelectedIndex < 0)
+            {
+                validacion = true;
+            }
+
+            else
+            {
+                validacion = false;
+            }
         }
 
     }
