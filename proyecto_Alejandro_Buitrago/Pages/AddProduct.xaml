@@ -9,8 +9,8 @@
       Background="White" Height="861.779">
 
     <StackPanel Margin="5,5,5,0" Background="White" Orientation="Vertical">
-        <TextBlock Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="20" Margin="280,10,326,0" FontWeight="Bold"/>
-        <Grid Height="702" Margin="0,20">
+        <TextBlock x:Name="titulo" Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="20" Margin="280,10,326,0" FontWeight="Bold"/>
+        <Grid x:Name="productGrid" Height="702" Margin="0,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>

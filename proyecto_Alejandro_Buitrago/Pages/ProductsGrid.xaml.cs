@@ -108,7 +108,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Product product = (Product)MyDataGrid.SelectedItem;
-            MainWindow.myNavigationFrame.NavigationService.Navigate(new ModydDelete(product));
+            MainWindow.myNavigationFrame.NavigationService.Navigate(new ModydDelete(productHandler));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

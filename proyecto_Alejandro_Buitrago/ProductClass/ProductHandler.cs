@@ -23,6 +23,9 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
 
         public void AddProduct(Product product) { productList.Add(product); }
 
+
     }
+
+   
 }
 

@@ -8,6 +8,7 @@
     <Madera IdNombre="Abeto">
       <Producto ProductRef="423423" Medida="10x10cm" Descripcion="Liston de abeto de 10x10cm" Precio="1.2" Fecha="22/01/2020" Stock="2" />
       <Producto ProductRef="423469" Medida="10x15cm" Descripcion="Liston de abeto de 10x15cm" Precio="2.0" Fecha="01/01/2020" Stock="1" />
+      <Producto ProductRef="Prueba" Medida="10x10cm" Descripcion="agagaga" Precio="5" Fecha="2021-01-23T00:00:00" Stock="25" />
     </Madera>
   </Tipo>
   <Tipo IdTipo="Tabla">
@@ -21,6 +22,11 @@
     <Madera IdNombre="Contrachapado">
       <Producto ProductRef="758423" Medida="10x15cm" Descripcion="Lamina de contrachapado de 10x15cm" Precio="2.2" Fecha="26/03/2020" Stock="3" />
       <Producto ProductRef="223469" Medida="40x40cm" Descripcion="Lamina de contrachapado de 40x40cm" Precio="3.0" Fecha="22/10/2020" Stock="0" />
+    </Madera>
+  </Tipo>
+  <Tipo IdTipo="hwhwhwh">
+    <Madera IdNombre="rjjeej">
+      <Producto ProductRef="whwhwh" Medida="prueba" Descripcion="5" Precio="5" Fecha="2021-01-23T00:00:00" Stock="5" />
     </Madera>
   </Tipo>
 </Almacen>

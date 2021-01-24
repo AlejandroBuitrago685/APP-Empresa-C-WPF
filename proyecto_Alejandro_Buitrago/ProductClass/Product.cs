@@ -52,5 +52,10 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return  "Referencia: " + referencia + ", " + "Tipo: " + tipo + ", " + "Descripción: "  + descripcion + ", " + "Madera: " + madera + " , " + "Medida: " + medida + ", " + "Fecha: " + fecha + ", " + "Precio: " + precio + ", " + "Stock: " + stock;
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace proyecto_Alejandro_Buitrago
     {
 
         public ProductHandler productHandler = new ProductHandler();
+        public Product product;
         public static Frame myNavigationFrame;
 
         public MainWindow()

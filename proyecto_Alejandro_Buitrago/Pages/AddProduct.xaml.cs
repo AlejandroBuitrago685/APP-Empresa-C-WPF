@@ -26,12 +26,38 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
        
         private XDocument xml = XDocument.Load("../../XML/xml.xml");
+        public ProductHandler productHandler1;
+        public Product product1;
+        int posicion;
+        public bool modificacion;
 
+        public AddProduct(String tituloPrincipal, ProductHandler productHandler, Product product, int pos)
+        {
+            
+            InitializeComponent();
+            titulo.Text = tituloPrincipal;
+            this.productHandler1 = productHandler;
+            this.product1 = product;
+            productGrid.DataContext = product;
+            this.posicion = pos;
+            InitCategoriaCMB();
+            Ref.Text = product.referencia;
+            Descripcion.Text = product.descripcion;
+            TipoCMB.Text = product.tipo;
+            MarcaCMB.Text = product.madera;
+            MedidaCMB.Text = product.medida;
+            modificacion = true;
+            Ref.IsEnabled = false;
+            brandCheck.IsEnabled = false;
+            medidaCheck.IsEnabled = false;
+            categoryCheck.IsEnabled = false;
+
+        }
         public AddProduct()
         {
             InitializeComponent();
             InitCategoriaCMB();
-            
+            modificacion = false;
         }
 
         private void InitCategoriaCMB()
@@ -116,56 +142,68 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
-            
-            String tipo = null;
-            String madera = null;
-            String medida = null;
-
-            if ((bool)categoryCheck.IsChecked || (bool)brandCheck.IsChecked || (bool)medidaCheck.IsChecked) {
-
-                tipo = TipoCMB.Text;
-                madera = MarcaCMB.Text;
-                medida = MedidaCMB.Text;
-
-                if ((bool)categoryCheck.IsChecked)
-                {
-                     tipo = categoryBox.Text;
-                     madera = brandBox.Text;
-                     medida = medidaBox.Text;
-               
-                
-                }   if ((bool)brandCheck.IsChecked)
-                {
-                    madera = brandBox.Text;
-                    medida = medidaBox.Text;
-                 
-                }
-                    if ((bool)medidaCheck.IsChecked)
-                {
-                    medida = medidaBox.Text;
-                }
-            
-            } else
+            if (Ref.Text.Length !=0)
             {
-                tipo = TipoCMB.Text;
-                madera = MarcaCMB.Text;
-                medida = MedidaCMB.Text;
+                if (modificacion)
+                {
 
+                    XMLHandler.ModifyProduct(product1);
+                    MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
+
+                }
+                else
+                {
+                    String tipo = null;
+                    String madera = null;
+                    String medida = null;
+
+                    if ((bool)categoryCheck.IsChecked || (bool)brandCheck.IsChecked || (bool)medidaCheck.IsChecked)
+                    {
+
+                        tipo = TipoCMB.Text;
+                        madera = MarcaCMB.Text;
+                        medida = MedidaCMB.Text;
+
+                        if ((bool)categoryCheck.IsChecked)
+                        {
+                            tipo = categoryBox.Text;
+                            madera = brandBox.Text;
+                            medida = medidaBox.Text;
+
+
+                        }
+                        if ((bool)brandCheck.IsChecked)
+                        {
+                            madera = brandBox.Text;
+                            medida = medidaBox.Text;
+
+                        }
+                        if ((bool)medidaCheck.IsChecked)
+                        {
+                            medida = medidaBox.Text;
+                        }
+
+                    }
+                    else
+                    {
+                        tipo = TipoCMB.Text;
+                        madera = MarcaCMB.Text;
+                        medida = MedidaCMB.Text;
+
+                    }
+
+
+                    String descripcion = Descripcion.Text;
+                    DateTime fecha = (DateTime)Fecha.SelectedDate;
+                    int stock = int.Parse(Stock.Text);
+                    float precio = float.Parse(Precio.Text);
+                    String referencia = Ref.Text;
+                    Product product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera);
+                    XMLHandler.AddXMLProduct(product);
+
+                }
             }
-
-
-            String descripcion = Descripcion.Text;
-            DateTime fecha = (DateTime)Fecha.SelectedDate;
-            int stock = int.Parse(Stock.Text);
-            float precio = float.Parse(Precio.Text);
-            String referencia = Ref.Text;
-            Product product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera);
-            XMLHandler.AddXMLProduct(product);
-           
-
-
-
+            
         }
 
     }

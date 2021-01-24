@@ -17,7 +17,6 @@ namespace proyecto_Alejandro_Buitrago.XML
         private static Product product;
         private static XElement xmlCategory;
         private static XElement xmlMadera;
-        private static XElement xmlMedida;
 
         private static void LoadXML()
         {
@@ -176,5 +175,21 @@ namespace proyecto_Alejandro_Buitrago.XML
             }
             SaveXML();
         }
+        public static void ModifyProduct(Product p)
+        {
+            LoadXML();
+            var listaRefXML = xml.Root.Elements("Tipo").Elements("Madera").Elements("Producto").Attributes("ProductRef");
+            foreach (XAttribute referencia in listaRefXML)
+            {
+                if (p.referencia == referencia.Value)
+                {
+                    referencia.Parent.Remove();
+                    break;
+                }
+            }
+            SaveXML();
+            AddXMLProduct(p);
+        }
     }
+   
 }
