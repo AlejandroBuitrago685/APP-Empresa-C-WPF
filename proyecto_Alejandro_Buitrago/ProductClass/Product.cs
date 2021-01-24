@@ -45,7 +45,7 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
 
         public String GetAllValues()
         {
-            return referencia + " " + tipo + " " + descripcion + " " + madera + " " + medida + " " + fecha + " " + precio + " " + stock;
+            return referencia + " " + tipo + " " + descripcion + " " + madera + " " + medida + " " + fecha + " " + precio.ToString().Replace('.',',') + " " + stock;
         }
 
         public object Clone()

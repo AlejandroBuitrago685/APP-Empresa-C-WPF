@@ -42,11 +42,6 @@ namespace proyecto_Alejandro_Buitrago.Pages
             productGrid.DataContext = product;
             this.posicion = pos;
             InitCategoriaCMB();
-            Ref.Text = product.referencia;
-            Descripcion.Text = product.descripcion;
-            TipoCMB.Text = product.tipo;
-            MarcaCMB.Text = product.madera;
-            MedidaCMB.Text = product.medida;
             modificacion = true;
             Ref.IsEnabled = false;
             brandCheck.IsEnabled = false;
@@ -59,6 +54,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             InitializeComponent();
             InitCategoriaCMB();
             modificacion = false;
+            Fecha.SelectedDate = DateTime.Today;
         }
 
         private void InitCategoriaCMB()
@@ -119,12 +115,14 @@ namespace proyecto_Alejandro_Buitrago.Pages
                 medidaBox.Visibility = Visibility.Hidden;
                 brandCheck.IsEnabled = true;
                 medidaCheck.IsEnabled = true;
+                categoryCheck.IsEnabled = true;
             }
             else
             {
                 brandBox.Visibility = Visibility.Visible;
                 medidaBox.Visibility = Visibility.Visible;
                 medidaCheck.IsEnabled = false;
+                categoryCheck.IsEnabled = false;
             }
         }
 
@@ -143,7 +141,6 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
             Validation();
 
             if (validacion)
@@ -208,6 +205,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     String referencia = Ref.Text;
                     Product product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera);
                     XMLHandler.AddXMLProduct(product);
+                    MainWindow.myNavigationFrame.NavigationService.Navigate(new AddProduct());
 
                 }
              
@@ -218,11 +216,12 @@ namespace proyecto_Alejandro_Buitrago.Pages
         public void Validation()
         {
 
+            
+
             if (Ref.Text.Length == 0 || Descripcion.Text.Length == 0 || Precio.Text.Length == 0 || Stock.Text.Length == 0 || Fecha.Text.Length == 0)
             {
                 validacion = true;
             }
-
             else if ((bool)categoryCheck.IsChecked & (brandBox.Text.Length == 0 || medidaBox.Text.Length == 0 || categoryBox.Text.Length == 0))
             {
                 validacion = true;
@@ -238,6 +237,12 @@ namespace proyecto_Alejandro_Buitrago.Pages
             else if (TipoCMB.SelectedIndex < 0 & MarcaCMB.SelectedIndex < 0 & MedidaCMB.SelectedIndex < 0)
             {
                 validacion = true;
+            }
+            else if (Precio.Text.Contains("."))
+            {
+
+                validacion = true;
+                Warning.Text = "Formato inválido en el precio, introduzca: (X,X)";
             }
 
             else

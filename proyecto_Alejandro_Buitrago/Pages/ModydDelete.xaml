@@ -43,7 +43,7 @@
             <TextBlock Grid.Row="7" Grid.Column="0" Text="Modelo:" FontSize="20"/>
 
             <TextBlock Margin="10,5" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=referencia}" FontWeight="Bold" FontSize="20" Foreground="Green"/>
-            <TextBlock Margin="10,5" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=descripcion}" FontWeight="Bold" FontSize="20" Foreground="Green"/>
+            <TextBlock Margin="10,5" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=madera}" FontWeight="Bold" FontSize="20" Foreground="Green"/>
             <TextBlock Margin="10,5" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=medida}" FontWeight="Bold" FontSize="20" Foreground="Green"/>
             <TextBlock Margin="10,5" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=descripcion}" FontWeight="Bold" FontSize="20" Foreground="Green"/>
             <TextBlock Margin="10,5" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=fecha}" FontWeight="Bold" FontSize="20" Foreground="Green"/>
