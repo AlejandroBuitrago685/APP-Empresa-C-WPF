@@ -1,4 +1,5 @@
-﻿using proyecto_Alejandro_Buitrago.ProductClass;
+﻿using proyecto_Alejandro_Buitrago.Images;
+using proyecto_Alejandro_Buitrago.ProductClass;
 using proyecto_Alejandro_Buitrago.XML;
 using System;
 using System.Collections.Generic;
@@ -251,5 +252,15 @@ namespace proyecto_Alejandro_Buitrago.Pages
             }
         }
 
+        private void añadirImagen_Click(object sender, RoutedEventArgs e)
+        {
+
+           BitmapImage bitmapImage =  ImageHandler.GetBitmapFromFile();
+            if(bitmapImage != null)
+            {
+                myImage.Source = bitmapImage;
+            }
+
+        }
     }
 }
