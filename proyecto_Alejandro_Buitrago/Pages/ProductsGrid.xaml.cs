@@ -121,7 +121,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
 
-            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere borrar toda este tipo?",
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere borrar todo este tipo?",
                                 "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
 
