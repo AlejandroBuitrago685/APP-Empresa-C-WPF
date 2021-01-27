@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
+using proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,5 +30,26 @@ namespace proyecto_Alejandro_Buitrago.Images
 
             return null;
         }
+        public static void AddImage(string productRef, BitmapImage bitmapImage)
+        {
+            LocalImageDBHandler.AddDataToDB(productRef, EncodeImage(bitmapImage));
+        }
+
+        public static byte[] EncodeImage(BitmapImage bitmapImage)
+        {
+
+            byte[] imageByte;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                imageByte = ms.ToArray();
+            }
+            return imageByte;
+        }
     }
+
+    
 }

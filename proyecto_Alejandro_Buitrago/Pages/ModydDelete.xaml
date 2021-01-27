@@ -57,7 +57,6 @@
         </StackPanel>
         <StackPanel x:Name="buttonsPanel" Visibility="Visible" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="MODIFICAR" Background="Green" Margin="10" Click="Button_Click_1" Height="33" Width="114" FontWeight="Bold"/>
-            <Button Content="BORRAR" Background="Red" Margin="10" Click="Button_Click" FontWeight="Bold" Width="75"/>
         </StackPanel>
     </StackPanel>
 </Page>

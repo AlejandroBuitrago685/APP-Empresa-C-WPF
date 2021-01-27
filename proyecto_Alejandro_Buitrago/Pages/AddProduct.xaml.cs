@@ -206,7 +206,13 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     String referencia = Ref.Text;
                     Product product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera);
                     XMLHandler.AddXMLProduct(product);
+
+
+                    ImageHandler.AddImage(product.referencia, (BitmapImage)myImage.Source);
+
+
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new AddProduct());
+
 
                 }
              
