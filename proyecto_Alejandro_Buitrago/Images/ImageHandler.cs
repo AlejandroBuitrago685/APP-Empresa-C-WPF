@@ -30,6 +30,13 @@ namespace proyecto_Alejandro_Buitrago.Images
 
             return null;
         }
+
+
+        public static void ModifyImage(string productRef, BitmapImage bitmapImage)
+        {
+            LocalImageDBHandler.UpdateDataFromDB(productRef, EncodeImage(bitmapImage));
+        }
+
         public static void AddImage(string productRef, BitmapImage bitmapImage)
         {
             LocalImageDBHandler.AddDataToDB(productRef, EncodeImage(bitmapImage));

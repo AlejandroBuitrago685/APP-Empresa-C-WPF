@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace proyecto_Alejandro_Buitrago.ProductClass
 {
@@ -17,6 +18,7 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
         public int stock { set; get; }
         public String tipo { set; get; }
         public String madera { set; get; }
+        public BitmapImage imagen { set; get; }
 
 
         public static ObservableCollection<Product> listaProductos = new ObservableCollection<Product>();
@@ -26,7 +28,7 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
             this.descripcion = "";
             this.medida = "";
             this.precio = 0;
-            this.fecha = DateTime.Now;
+            this.fecha = DateTime.Today;
             this.stock = 0;
             this.tipo = "";
             this.madera = "";

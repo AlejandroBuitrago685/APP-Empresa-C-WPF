@@ -16,6 +16,7 @@
       <Producto ProductRef="427823" Medida="10x15cm" Descripcion="Tabla de pino de 10x15cm" Precio="4.99" Fecha="13/11/20" Stock="1" />
       <Producto ProductRef="563469" Medida="40x40cm" Descripcion="Tabla de pino de 40x40cm" Precio="4.7" Fecha="19/01/21" Stock="3" />
       <Producto ProductRef="67890" Medida="40x40cm" Descripcion="fqwfqfqf" Precio="5" Fecha="28/01/21" Stock="29" />
+      <Producto ProductRef="gagagag" Medida="40x40cm" Descripcion="gagagag" Precio="25" Fecha="28/01/21" Stock="29" />
     </Madera>
   </Tipo>
   <Tipo IdTipo="Lamina">

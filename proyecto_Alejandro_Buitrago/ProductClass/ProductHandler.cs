@@ -1,4 +1,5 @@
-﻿using proyecto_Alejandro_Buitrago.XML;
+﻿using proyecto_Alejandro_Buitrago.Images;
+using proyecto_Alejandro_Buitrago.XML;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,14 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
             UpdateProductList();
         }
 
-        public void UpdateProductList() { this.productList = XMLHandler.LoadProducts(); }
+        public void UpdateProductList() {
+            this.productList = XMLHandler.LoadProducts(); 
+
+            foreach(Product product in productList)
+            {
+                product.imagen = ImageHandler.LoadImage(product.referencia);
+            }
+        }
 
         public void AddProduct(Product product) { productList.Add(product); }
 

@@ -156,6 +156,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
                     XMLHandler.ModifyProduct(product1);
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
+                    ImageHandler.ModifyImage(product1.referencia, (BitmapImage)myImage.Source);
 
                 }
                 else

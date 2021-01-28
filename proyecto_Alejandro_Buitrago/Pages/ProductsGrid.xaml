@@ -22,7 +22,18 @@
         </StackPanel>
         <DataGrid x:Name="MyDataGrid" Margin="20" Height="604" ColumnWidth="*" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
+            
+
             <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Imagen">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image x:Name="myProductImage" Width="30" Height="30" Source="{Binding Path=imagen}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTextColumn Header="Referencia" Binding="{Binding referencia}"/>
                 <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}"/>
                 <DataGridTextColumn Header="Madera" Binding="{Binding madera}"/>

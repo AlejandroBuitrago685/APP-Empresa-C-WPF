@@ -1,4 +1,5 @@
 ﻿using proyecto_Alejandro_Buitrago.ProductClass;
+using proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage;
 using proyecto_Alejandro_Buitrago.XML;
 using System;
 using System.Collections.Generic;
@@ -116,6 +117,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             Product product = (Product)MyDataGrid.SelectedItem;
             XMLHandler.DeleteProduct(product.referencia);
             UpdateProductList();
+            LocalImageDBHandler.removeDataFromDB(product.referencia);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
