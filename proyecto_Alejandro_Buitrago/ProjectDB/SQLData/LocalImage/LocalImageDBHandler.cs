@@ -18,5 +18,21 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage
             imagesAdapter.Insert(idImage, produtImage);
             imagesAdapter.Update(dataSet);
         }
+
+        public static byte [] GetDataFromDB(String idImage)
+        {
+            byte[] imageData = null;
+            try
+            {
+                imageData = imagesAdapter.GetImage(idImage).ElementAt(0).PorductImage;
+            }
+
+            catch(Exception ex)
+            {
+
+            }
+
+            return imageData;
+        }
     }
 }

@@ -778,11 +778,17 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage.LocalImageDat
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT IdImage, PorductImage FROM dbo.Images";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        IdImage, PorductImage\r\nFROM            Images\r\nWHERE        (IdImag" +
+                "e = @IdImage)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdImage", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "IdImage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -804,6 +810,42 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage.LocalImageDat
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet_Local_Image.ImagesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet_Local_Image.ImagesDataTable dataTable = new DataSet_Local_Image.ImagesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(DataSet_Local_Image.ImagesDataTable dataTable, string IdImage) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((IdImage == null)) {
+                throw new global::System.ArgumentNullException("IdImage");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(IdImage));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSet_Local_Image.ImagesDataTable GetImage(string IdImage) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((IdImage == null)) {
+                throw new global::System.ArgumentNullException("IdImage");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(IdImage));
+            }
             DataSet_Local_Image.ImagesDataTable dataTable = new DataSet_Local_Image.ImagesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

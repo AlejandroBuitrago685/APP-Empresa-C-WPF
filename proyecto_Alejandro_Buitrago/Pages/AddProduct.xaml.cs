@@ -48,6 +48,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             brandCheck.IsEnabled = false;
             medidaCheck.IsEnabled = false;
             categoryCheck.IsEnabled = false;
+            myImage.Source = ImageHandler.LoadImage(product.referencia);
 
         }
         public AddProduct()
