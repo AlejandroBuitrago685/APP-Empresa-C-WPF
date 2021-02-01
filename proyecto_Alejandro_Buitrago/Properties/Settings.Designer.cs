@@ -26,11 +26,23 @@ namespace proyecto_Alejandro_Buitrago.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ProjectDB\\SQL" +
-            "Data\\LocalImage\\LocalImagesDB\\DB_Local_Images.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\alevi\\Source\\Repos\\X" +
+            "MLIntro_AlejandroB\\proyecto_Alejandro_Buitrago\\ProjectDB\\SQLData\\LocalImage\\Loca" +
+            "lImagesDB\\DB_Local_Images.mdf;Integrated Security=True")]
         public string DB_Local_ImagesConnectionString {
             get {
                 return ((string)(this["DB_Local_ImagesConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=Alexalex_231;persistsecurityinfo=True;data" +
+            "base=projectdb")]
+        public string projectdbConnectionString {
+            get {
+                return ((string)(this["projectdbConnectionString"]));
             }
         }
     }

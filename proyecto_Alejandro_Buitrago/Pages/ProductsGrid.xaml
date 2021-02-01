@@ -67,8 +67,27 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
 
+            <DataGridTemplateColumn Width="30">
+                <DataGridTemplateColumn.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell }">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding publish}" Value="true">
+                                <Setter Property="Background" Value="#FF50E824" />
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding publish}" Value="false">
+                                <Setter Property="Background" Value="Gray" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGridTemplateColumn.CellStyle>
+
+            </DataGridTemplateColumn>
+
 
         </DataGrid>
+        
+        
 
     </StackPanel>
 </Page>

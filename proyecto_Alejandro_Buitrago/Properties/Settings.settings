@@ -5,10 +5,18 @@
     <Setting Name="DB_Local_ImagesConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ProjectDB\SQLData\LocalImage\LocalImagesDB\DB_Local_Images.mdf;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\alevi\Source\Repos\XMLIntro_AlejandroB\proyecto_Alejandro_Buitrago\ProjectDB\SQLData\LocalImage\LocalImagesDB\DB_Local_Images.mdf;Integrated Security=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ProjectDB\SQLData\LocalImage\LocalImagesDB\DB_Local_Images.mdf;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\alevi\Source\Repos\XMLIntro_AlejandroB\proyecto_Alejandro_Buitrago\ProjectDB\SQLData\LocalImage\LocalImagesDB\DB_Local_Images.mdf;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="projectdbConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=localhost;user id=root;password=Alexalex_231;persistsecurityinfo=True;database=projectdb&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=localhost;user id=root;password=Alexalex_231;persistsecurityinfo=True;database=projectdb</Value>
     </Setting>
   </Settings>
 </SettingsFile>
