@@ -19,6 +19,7 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
         public String tipo { set; get; }
         public String madera { set; get; }
         public BitmapImage imagen { set; get; }
+        public bool publish { set; get; }
 
 
         public static ObservableCollection<Product> listaProductos = new ObservableCollection<Product>();
@@ -43,6 +44,19 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
             this.stock = stock;
             this.tipo = tipo;
             this.madera = madera;
+        }
+
+        public Product(string referencia, string descripcion, string medida, float precio, DateTime fecha, int stock, string tipo, string madera, bool publish)
+        {
+            this.referencia = referencia;
+            this.descripcion = descripcion;
+            this.medida = medida;
+            this.precio = precio;
+            this.fecha = fecha;
+            this.stock = stock;
+            this.tipo = tipo;
+            this.madera = madera;
+            this.publish = publish;
         }
 
         public String GetAllValues()

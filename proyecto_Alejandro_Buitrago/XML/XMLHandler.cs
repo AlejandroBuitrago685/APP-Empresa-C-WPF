@@ -45,7 +45,7 @@ namespace proyecto_Alejandro_Buitrago.XML
         {
             XElement xmlProduct = new XElement("Producto", new XAttribute("ProductRef", product.referencia), new XAttribute("Medida", product.medida),
                  new XAttribute("Descripcion", product.descripcion), new XAttribute("Precio", product.precio.ToString().Replace('.',',')),
-                 new XAttribute("Fecha", product.fecha.ToString("dd/MM/yy")), new XAttribute("Stock", product.stock));
+                 new XAttribute("Fecha", product.fecha.ToString("dd/MM/yy")), new XAttribute("Stock", product.stock), new XAttribute("Publish", product.publish));
             xmlMadera.Add(xmlProduct);
         }
 
@@ -65,6 +65,7 @@ namespace proyecto_Alejandro_Buitrago.XML
                 product.tipo = productXML.Parent.Parent.Attribute("IdTipo").Value;
                 product.madera = productXML.Parent.Attribute("IdNombre").Value;
                 product.fecha = DateTime.Parse(productXML.Attribute("Fecha").Value);
+                product.publish = bool.Parse(productXML.Attribute("Publish").Value);
                 productList.Add(product);
             }
             return productList;

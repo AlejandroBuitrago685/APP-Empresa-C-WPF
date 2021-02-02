@@ -1,5 +1,6 @@
 ﻿using proyecto_Alejandro_Buitrago.Images;
 using proyecto_Alejandro_Buitrago.ProductClass;
+using proyecto_Alejandro_Buitrago.ProjectDB.MySQLData;
 using proyecto_Alejandro_Buitrago.XML;
 using System;
 using System.Collections.Generic;
@@ -206,15 +207,31 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     int stock = int.Parse(Stock.Text);
                     float precio = float.Parse(Precio.Text);
                     String referencia = Ref.Text;
-                    Product product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera);
-                    XMLHandler.AddXMLProduct(product);
+                    Product product;
+
+                    MessageBoxResult resultado = MessageBox.Show("¿Quiere añadir el producto a la base de datos?",
+                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
 
-                    ImageHandler.AddImage(product.referencia, (BitmapImage)myImage.Source);
+                    switch (resultado)
+                    {
+                        case MessageBoxResult.Yes:
 
+                            projectDBHandler.AddDataToDB(referencia, descripcion, medida, precio, fecha, stock, tipo, madera, (BitmapImage)myImage.Source);
+                            product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera, true);
+                            XMLHandler.AddXMLProduct(product);
+                            ImageHandler.AddImage(product.referencia, (BitmapImage)myImage.Source);
+                            MessageBox.Show("Añadido con éxito a la base de datos");
+                            break;
+
+                        case MessageBoxResult.No:
+                            product = new Product(referencia, descripcion, medida, precio, fecha, stock, tipo, madera, false);
+                            XMLHandler.AddXMLProduct(product);
+                            ImageHandler.AddImage(product.referencia, (BitmapImage)myImage.Source);
+                            break;
+                    }
 
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new AddProduct());
-
 
                 }
              

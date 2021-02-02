@@ -1,4 +1,6 @@
-﻿using proyecto_Alejandro_Buitrago.ProductClass;
+﻿using proyecto_Alejandro_Buitrago.Images;
+using proyecto_Alejandro_Buitrago.ProductClass;
+using proyecto_Alejandro_Buitrago.ProjectDB.MySQLData;
 using proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage;
 using proyecto_Alejandro_Buitrago.XML;
 using System;
@@ -29,6 +31,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
         ProductHandler productHandler;
         private XDocument xml = XDocument.Load("../../XML/xml.xml");
         ObservableCollection<Product> listaFiltrada;
+        public Product product;
 
         public ProductsGrid(ProductHandler productHandler)
         {
@@ -140,9 +143,45 @@ namespace proyecto_Alejandro_Buitrago.Pages
                 case MessageBoxResult.Cancel:
                     break;
             }
+        
+        }
 
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
 
-           
+            Product product = (Product)MyDataGrid.SelectedItem;
+            if (product.publish == false) 
+            {
+                MessageBoxResult resultado = MessageBox.Show("¿Quiere añadir el producto a la base de datos?",
+                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                projectDBHandler.AddDataToDB(product.referencia, product.descripcion, product.medida, product.precio, product.fecha, product.stock, product.tipo, product.madera, product.imagen);
+                product.publish = true;
+                XMLHandler.ModifyProduct(product);
+                UpdateProductList();
+                MessageBox.Show("Añadido con éxito a la base de datos");
+            }
+            else
+            {
+                MessageBoxResult resultado = MessageBox.Show("¿Seguro que quiere borrar el producto de la base de datos?",
+                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                switch (resultado)
+                {
+                    case MessageBoxResult.Yes:
+                        //LocalImageDBHandler.removeDataFromDB(product.referencia);
+                        projectDBHandler.removeDataFromDB(product.referencia, product.descripcion, product.medida, product.precio, product.fecha, product.stock, product.tipo, product.madera, product.imagen);
+                        product.publish = false;
+                        XMLHandler.ModifyProduct(product);
+                        UpdateProductList();
+                        MessageBox.Show("Borrado con éxito de la base de datos");
+                        break;
+
+                    case MessageBoxResult.No:
+                        break;
+                }
+            }
+
+            
         }
     }
     

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:proyecto_Alejandro_Buitrago"
         mc:Ignorable="d"
-        Title="MainWindow" Height="993.462" Width="900">
+        Title="MainWindow" Height="993.462" Width="999">
     <StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue">
