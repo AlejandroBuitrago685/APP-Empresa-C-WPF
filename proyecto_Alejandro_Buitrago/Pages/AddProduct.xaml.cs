@@ -1,6 +1,7 @@
 ﻿using proyecto_Alejandro_Buitrago.Images;
 using proyecto_Alejandro_Buitrago.ProductClass;
 using proyecto_Alejandro_Buitrago.ProjectDB.MySQLData;
+using proyecto_Alejandro_Buitrago.ProjectDB.SQLData.LocalImage;
 using proyecto_Alejandro_Buitrago.XML;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
     public partial class AddProduct : Page
     {
 
-       
+
         private XDocument xml = XDocument.Load("../../XML/xml.xml");
         public ProductHandler productHandler1;
         public Product product1;
@@ -36,7 +37,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         public AddProduct(String tituloPrincipal, ProductHandler productHandler, Product product, int pos)
         {
-            
+
             InitializeComponent();
             titulo.Text = tituloPrincipal;
             this.productHandler1 = productHandler;
@@ -58,6 +59,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             InitCategoriaCMB();
             modificacion = false;
             Fecha.SelectedDate = DateTime.Today;
+            myImage.Source = ImageHandler.LoadDefaultImage();
         }
 
         private void InitCategoriaCMB()
@@ -159,6 +161,12 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
                     ImageHandler.ModifyImage(product1.referencia, (BitmapImage)myImage.Source);
 
+
+                    if (product1.publish)
+                    {
+                        projectDBHandler.UpdateDB(product1.referencia, product1.descripcion, product1.medida, product1.precio, product1.fecha, product1.stock, product1.tipo, product1.madera, (BitmapImage)myImage.Source);
+                    }
+
                 }
                 else
                 {
@@ -201,6 +209,10 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
                     }
 
+                    if(myImage.Source == null)
+                    {
+                        ImageHandler.LoadDefaultImage();
+                    }
 
                     String descripcion = Descripcion.Text;
                     DateTime fecha = (DateTime)Fecha.SelectedDate;
@@ -234,15 +246,15 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new AddProduct());
 
                 }
-             
+
             }
-            
+
         }
 
         public void Validation()
         {
 
-            
+
 
             if (Ref.Text.Length == 0 || Descripcion.Text.Length == 0 || Precio.Text.Length == 0 || Stock.Text.Length == 0 || Fecha.Text.Length == 0)
             {
@@ -252,14 +264,14 @@ namespace proyecto_Alejandro_Buitrago.Pages
             {
                 validacion = true;
             }
-            else if ((bool) brandCheck.IsChecked & (TipoCMB.SelectedIndex < 0 || brandBox.Text.Length == 0 || medidaBox.Text.Length == 0))
+            else if ((bool)brandCheck.IsChecked & (TipoCMB.SelectedIndex < 0 || brandBox.Text.Length == 0 || medidaBox.Text.Length == 0))
             {
                 validacion = true;
             }
-            else if ((bool) medidaCheck.IsChecked & (TipoCMB.SelectedIndex < 0 || MarcaCMB.SelectedIndex < 0 || medidaBox.Text.Length == 0))
+            else if ((bool)medidaCheck.IsChecked & (TipoCMB.SelectedIndex < 0 || MarcaCMB.SelectedIndex < 0 || medidaBox.Text.Length == 0))
             {
                 validacion = true;
-            } 
+            }
             else if (TipoCMB.SelectedIndex < 0 & MarcaCMB.SelectedIndex < 0 & MedidaCMB.SelectedIndex < 0)
             {
                 validacion = true;
@@ -280,10 +292,28 @@ namespace proyecto_Alejandro_Buitrago.Pages
         private void añadirImagen_Click(object sender, RoutedEventArgs e)
         {
 
-           BitmapImage bitmapImage =  ImageHandler.GetBitmapFromFile();
-            if(bitmapImage != null)
+            BitmapImage bitmapImage = ImageHandler.GetBitmapFromFile();
+            if (bitmapImage != null)
             {
                 myImage.Source = bitmapImage;
+            }
+
+        }
+
+        private void borrarImagen_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult resultado = MessageBox.Show("¿Seguro que quiere borrar la imagen del producto?",
+                               "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+
+            switch (resultado)
+            {
+                case MessageBoxResult.Yes:
+
+                    LocalImageDBHandler.removeDataFromDB(product1.referencia);
+                    myImage.Source = ImageHandler.LoadDefaultImage();
+                    break;
+
             }
 
         }

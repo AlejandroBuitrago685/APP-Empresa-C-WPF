@@ -78,7 +78,7 @@
             <StackPanel Grid.Column="2" Grid.RowSpan="50" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image x:Name="myImage" Margin="10" Height="300" Width="250" Stretch="Uniform"/>
                 <Button x:Name="añadirImagen" Content="Selecionar una imagen" Click="añadirImagen_Click" Height="32" FontSize="15"/>
-                <Button x:Name="borrarImagen" Content="Borrar imagen" Height="32" FontSize="15" Background="AliceBlue"/>
+                <Button x:Name="borrarImagen" Content="Borrar imagen" Height="32" FontSize="15" Background="AliceBlue" Click="borrarImagen_Click"/>
             </StackPanel>
 
 

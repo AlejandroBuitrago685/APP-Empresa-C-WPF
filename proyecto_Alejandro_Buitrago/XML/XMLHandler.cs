@@ -36,7 +36,7 @@ namespace proyecto_Alejandro_Buitrago.XML
             AddMadera();
             CrearProducto();
             SaveXML();
-            MessageBoxResult resultado = MessageBox.Show("Se ha agregado un nuevo producto: \n" + "Referencia: " + p.referencia + "\n" + "Tipo de madera: " + p.madera + "\n" + "Precio: " + p.precio + "\n" + "Tipo: " + p.tipo + "\n" + "Medida: " + p.medida + "\n" + "Stock: " + p.stock, "Registro de nuevo producto", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBoxResult resultado = MessageBox.Show("Se ha agregado un nuevo producto: \n" + "Referencia: " + p.referencia + "\n" + "Tipo de madera: " + p.madera + "\n" + "Precio: " + p.precio + "\n" + "Tipo: " + p.tipo + "\n" + "Medida: " + p.medida + "\n" + "Stock: " + p.stock, "Registro de nuevo producto", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
         }

@@ -93,6 +93,9 @@
       <DependentUpon>ProductsGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductClass\ProductHandler.cs" />
+    <Compile Include="ProjectDB\MySQLData\projectdbDataSet.cs">
+      <DependentUpon>projectdbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ProjectDB\MySQLData\projectdbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -194,6 +197,7 @@
     <Resource Include="XML\xml.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\noPhoto.png" />
     <Content Include="ProjectDB\SQLData\LocalImage\LocalImagesDB\DB_Local_Images.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -32,6 +32,16 @@ namespace proyecto_Alejandro_Buitrago.Images
         }
 
 
+        public static BitmapImage LoadDefaultImage()
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri("/Images/noPhoto.png", UriKind.Relative);
+            bitmapImage.EndInit();
+            return bitmapImage;
+        }
+
+
         public static void ModifyImage(string productRef, BitmapImage bitmapImage)
         {
             LocalImageDBHandler.UpdateDataFromDB(productRef, EncodeImage(bitmapImage));
@@ -46,7 +56,7 @@ namespace proyecto_Alejandro_Buitrago.Images
         public static BitmapImage LoadImage(String productRef)
         {
             byte[] imageData = LocalImageDBHandler.GetDataFromDB(productRef);
-            BitmapImage bitmapImage = new BitmapImage();
+            BitmapImage bitmapImage = LoadDefaultImage();
 
             if(imageData != null)
             {
