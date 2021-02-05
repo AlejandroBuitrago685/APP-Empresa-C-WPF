@@ -6,11 +6,11 @@
       xmlns:local="clr-namespace:proyecto_Alejandro_Buitrago.Pages"
       mc:Ignorable="d" d:DesignWidth="800"
       Title="AddProduct"
-      Background="White" Height="861.779">
+      Background="White" Height="735">
 
-    <StackPanel Margin="5,5,0,0" Background="White" Orientation="Vertical">
-        <TextBlock x:Name="titulo" Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="20" Margin="280,10,326,0" FontWeight="Bold"/>
-        <Grid x:Name="productGrid" Height="702" Margin="0,20,0,5">
+    <StackPanel Margin="5,5,0,10" Background="White" Orientation="Vertical">
+        <TextBlock x:Name="titulo" Text="NUEVO PRODUCTO" HorizontalAlignment="Center" FontSize="17" Margin="280,10,326,0" FontWeight="Bold"/>
+        <Grid x:Name="productGrid" Height="618" Margin="0,20,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>
@@ -18,64 +18,64 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="27"/>
-                <RowDefinition Height="49*" />
-                <RowDefinition Height="31"/>
-                <RowDefinition Height="56*" />
-                <RowDefinition Height="31"/>
-                <RowDefinition Height="52*"/>
+                <RowDefinition Height="46*" />
                 <RowDefinition Height="27"/>
-                <RowDefinition Height="55*"/>
+                <RowDefinition Height="59*" />
+                <RowDefinition Height="31"/>
+                <RowDefinition Height="54*"/>
+                <RowDefinition Height="23"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="31"/>
+                <RowDefinition Height="39"/>
+                <RowDefinition Height="39"/>
+                <RowDefinition Height="34"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="58"/>
-                <RowDefinition Height="33"/>
-                <RowDefinition Height="65"/>
+                <RowDefinition Height="59"/>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="41"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Referencia" FontSize="20" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Height="28" Margin="56,-6,54,5" Width="345"/>
-            <TextBox  x:Name="Ref" Grid.Row="1" Grid.Column="0" Text="{Binding Path=referencia}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="345" Height="32" Margin="56,7,54,10"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Referencia" FontSize="15" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Height="28" Margin="56,-6,54,5" Width="345"/>
+            <TextBox  x:Name="Ref" Grid.Column="0" Text="{Binding referencia}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="345" Height="30" Margin="56,5,54,11" Grid.Row="1"/>
 
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Tipo de producto " TextAlignment="Center" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,0,54,5" Width="345"/>
-            <ComboBox Grid.Row="3" Grid.Column="0" x:Name="TipoCMB" Text="{Binding Path=tipo}" Margin="56,10,54,10" SelectionChanged="TipoCMB_SelectionChanged" FontSize="20" HorizontalContentAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tipo de producto " TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,45,54,2" Width="345" Grid.RowSpan="2"/>
+            <ComboBox Grid.Row="3" Grid.Column="0" x:Name="TipoCMB" Text="{Binding tipo}" Margin="56,10,54,21" SelectionChanged="TipoCMB_SelectionChanged" FontSize="20" HorizontalContentAlignment="Center"/>
 
 
-            <TextBox Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,54,12" Width="345" Height="34" x:Name="categoryBox" Visibility="Hidden"/>
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tipo de Madera" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Margin="56,0,54,3" Width="345"/>
+            <TextBox Grid.Row="3" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,16,54,9" Width="345" Height="34" x:Name="categoryBox" Visibility="Hidden"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tipo de Madera" FontSize="15" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Margin="56,0,54,3" Width="345"/>
 
 
-            <ComboBox Grid.Row="5" Grid.Column="0" x:Name="MarcaCMB" Text="{Binding Path=madera}" Margin="56,10,54,8" FontSize="20" HorizontalContentAlignment="Center" SelectionChanged="MarcaCMB_SelectionChanged_1"/>
-            <TextBox Grid.Row="5" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,8,54,10" Width="345" Height="34" x:Name="brandBox" Visibility="Hidden"/>
+            <ComboBox Grid.Row="5" Grid.Column="0" x:Name="MarcaCMB" Text="{Binding madera}" Margin="56,2,54,24" FontSize="20" HorizontalContentAlignment="Center" SelectionChanged="MarcaCMB_SelectionChanged_1"/>
+            <TextBox Grid.Row="5" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,8,54,12" Width="345" Height="34" x:Name="brandBox" Visibility="Hidden"/>
 
 
-            <TextBlock Grid.Row="6" Grid.Column="0" Text="Medida" TextAlignment="Center" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,0,54,1" Width="345"/>
-            <ComboBox Grid.Row="7" Grid.Column="0" x:Name="MedidaCMB" Text="{Binding Path=medida}" Margin="56,10,54,10" FontSize="20" HorizontalContentAlignment="Center"/>
-            <TextBox Grid.Row="7" Grid.Column="0" x:Name="medidaBox" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,9,54,10" Width="345" Height="36" Visibility="Hidden"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Medida" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,41,54,10" Width="345" Grid.RowSpan="2"/>
+            <ComboBox Grid.Row="6" Grid.Column="0" x:Name="MedidaCMB" Text="{Binding medida}" Margin="56,13,54,35" FontSize="20" HorizontalContentAlignment="Center" Grid.RowSpan="2"/>
+            <TextBox Grid.Row="7" Grid.Column="0" x:Name="medidaBox" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,3,54,13" Width="345" Height="36" Visibility="Hidden"/>
 
-            <TextBlock Grid.Row="8" Grid.Column="0" Text="Añade una descripción " TextAlignment="Center" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,2,54,2" Width="345"/>
-            <TextBox x:Name="Descripcion"  Grid.Row="9" Grid.Column="0" Text="{Binding Path=descripcion}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,14,54,6" Width="345" Height="30"/>
-
-
-            <TextBlock Grid.Row="10" Grid.Column="0" Text="Precio" TextAlignment="Center" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,10,54,4" Width="345"/>
-            <TextBox x:Name="Precio" Grid.Row="11" Grid.Column="0" Text="{Binding Path=precio}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,19,54,11" Width="345" Height="28"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Añade una descripción " TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,36,54,21" Width="345" Grid.RowSpan="2"/>
+            <TextBox x:Name="Descripcion"  Grid.Row="8" Grid.Column="0" Text="{Binding descripcion}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,54,30" Width="345" Height="30" Grid.RowSpan="2"/>
 
 
-            <TextBlock Grid.Row="12" Grid.Column="0" Text="Fecha de alta" TextAlignment="Center" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,4,54,10" Width="345"/>
-            <DatePicker x:Name="Fecha" Grid.Row="13" Grid.Column="0" FontSize="20" Text="{Binding Path=fecha}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,54,10" Width="345" Height="38"/>
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="Precio" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,14,54,38" Width="345" Grid.RowSpan="2"/>
+            <TextBox x:Name="Precio" Grid.Row="10" Grid.Column="0" Text="{Binding precio}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,54,1" Width="345" Height="28"/>
 
 
-            <TextBlock Grid.Row="14" Grid.Column="0" Text="Stock" FontSize="20" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,6,54,1" Width="345"/>
-            <TextBox x:Name="Stock" Grid.Row="15" Grid.Column="0" FontSize="20" Text="{Binding Path=stock}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,21,54,14" Width="345" Height="30"/>
+            <TextBlock Grid.Row="11" Grid.Column="0" Text="Fecha de alta" TextAlignment="Center" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,10,54,28" Width="345" Grid.RowSpan="2"/>
+            <DatePicker x:Name="Fecha" Grid.Row="12" Grid.Column="0" FontSize="20" Text="{Binding fecha}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,54,41" Width="345" Height="38" Grid.RowSpan="2"/>
 
 
-            <CheckBox x:Name="categoryCheck" Grid.Row="3" Grid.Column="1" Height="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="CheckBox_Checked" Margin="0,18,20,20" RenderTransformOrigin="-3.946,0.407"/>
-            <CheckBox x:Name="brandCheck"  Grid.Row="5" Grid.Column="1" Height="26" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="brandCheck_Checked" Margin="0,16,0,10" HorizontalAlignment="Right" Width="40"/>
-            <CheckBox x:Name="medidaCheck" Grid.Row="7" Grid.Column="1" Width="40" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="medidaCheck_Checked" Margin="0,17,0,12"/>
+            <TextBlock Grid.Row="13" Grid.Column="0" Text="Stock" FontSize="15" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="56,23,54,10" Width="345"/>
+            <TextBox x:Name="Stock" Grid.Row="14" Grid.Column="0" FontSize="20" Text="{Binding stock}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,0,54,37" Width="345" Height="30" Grid.RowSpan="2"/>
 
-            <StackPanel Grid.Column="2" Grid.RowSpan="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <CheckBox x:Name="categoryCheck" Grid.Row="3" Grid.Column="1" Height="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="CheckBox_Checked" Margin="0,20,20,21" RenderTransformOrigin="-3.946,0.407"/>
+            <CheckBox x:Name="brandCheck"  Grid.Row="5" Grid.Column="1" Height="26" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="brandCheck_Checked" Margin="0,0,0,28" HorizontalAlignment="Right" Width="40" RenderTransformOrigin="0.5,-1.5"/>
+            <CheckBox x:Name="medidaCheck" Grid.Row="6" Grid.Column="1" Width="40" Height="26" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" Checked="medidaCheck_Checked" Margin="0,14,0,35" Grid.RowSpan="2"/>
+
+            <StackPanel Grid.Column="2" Grid.RowSpan="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="384" Margin="15,32,15,35" Grid.Row="3" Width="270">
                 <Image x:Name="myImage" Margin="10" Height="300" Width="250" Stretch="Uniform"/>
                 <Button x:Name="añadirImagen" Content="Selecionar una imagen" Click="añadirImagen_Click" Height="32" FontSize="15"/>
                 <Button x:Name="borrarImagen" Content="Borrar imagen" Height="32" FontSize="15" Background="AliceBlue" Click="borrarImagen_Click"/>
@@ -83,12 +83,12 @@
 
 
         </Grid>
-        
+        <Button Content="Aceptar" Margin="200,0,200,00" Height="39" Click="Button_Click_1"/>
+
 
         <TextBlock x:Name="Warning" Text="Debe rellenar todos los campos" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15" Visibility="Hidden"/>
-        <Button Content="Aceptar" Margin="200,5,200,10" Height="39" Click="Button_Click_1"/>
 
-        
+
 
     </StackPanel>
 </Page>

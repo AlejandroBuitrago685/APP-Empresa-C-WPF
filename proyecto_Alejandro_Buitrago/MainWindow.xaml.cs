@@ -31,6 +31,7 @@ namespace proyecto_Alejandro_Buitrago
         {
             InitializeComponent();
             myNavigationFrame = MyNavigationFrame;
+            myNavigationFrame.NavigationService.Navigate(new Inicio());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
