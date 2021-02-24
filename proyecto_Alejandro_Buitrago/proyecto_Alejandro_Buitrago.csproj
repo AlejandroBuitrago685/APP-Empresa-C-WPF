@@ -86,6 +86,12 @@
     <Compile Include="Pages\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CrearFactura.xaml.cs">
+      <DependentUpon>CrearFactura.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\facturas.xaml.cs">
+      <DependentUpon>facturas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ModydDelete.xaml.cs">
       <DependentUpon>ModydDelete.xaml</DependentUpon>
     </Compile>
@@ -125,6 +131,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CrearFactura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\facturas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -302,6 +302,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void borrarImagen_Click(object sender, RoutedEventArgs e)
         {
+
             MessageBoxResult resultado = MessageBox.Show("¿Seguro que quiere borrar la imagen del producto?",
                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

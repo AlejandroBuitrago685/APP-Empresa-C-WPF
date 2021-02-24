@@ -12,6 +12,7 @@
             <Button Content="Inicio" Margin="20" Width="100" Height="30" Click="Button_Click"/>
             <Button Content="Añadir" Margin="20" Width="100" Height="30" Click="Button_Click_2"/>
             <Button Content="Mostrar" Margin="20" Width="100" Height="30" Click="Button_Click_1"/>
+            <Button Content="Facturas" Margin="20" Width="100" Height="30" Click="Button_Click_3"/>
         </StackPanel>
         <Frame x:Name="MyNavigationFrame" NavigationUIVisibility="Hidden" Height="720" Margin="10"/>
     </StackPanel>

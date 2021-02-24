@@ -34,7 +34,7 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.MySQLData
 
         internal static void AddDataToDB(string referencia, string descripcion, string medida, float precio, DateTime fecha, int stock, string tipo, string madera, BitmapImage imagen)
         {
-            productAdapter.Insert(referencia, descripcion, medida, precio, fecha, stock, tipo, madera, imagen);
+            productAdapter.Insert(referencia, descripcion, medida, precio, fecha, stock, tipo, madera, ImageHandler.EncodeImage(imagen));
             productAdapter.Update(dataSet);
         }
 
