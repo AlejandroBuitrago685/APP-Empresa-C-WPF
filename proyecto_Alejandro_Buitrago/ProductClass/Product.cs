@@ -20,9 +20,11 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
         public String madera { set; get; }
         public BitmapImage imagen { set; get; }
         public bool publish { set; get; }
+        public int cantidad { set; get; }
 
 
         public static ObservableCollection<Product> listaProductos = new ObservableCollection<Product>();
+        public static ObservableCollection<Product> listaProductos2 = new ObservableCollection<Product>();
         public Product()
         {
             this.referencia = "";
@@ -58,6 +60,8 @@ namespace proyecto_Alejandro_Buitrago.ProductClass
             this.madera = madera;
             this.publish = publish;
         }
+
+
 
         public String GetAllValues()
         {

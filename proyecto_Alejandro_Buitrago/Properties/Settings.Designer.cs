@@ -38,11 +38,22 @@ namespace proyecto_Alejandro_Buitrago.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=Alexalex_231;persistsecurityinfo=True;data" +
-            "base=projectdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=infsalinas.sytes.net;user id=root;password=dam1234;port=5306;persistsecuri" +
+            "tyinfo=True;database=projectdb")]
         public string projectdbConnectionString {
             get {
                 return ((string)(this["projectdbConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ProjectDB\\SQL" +
+            "Data\\Clientes\\ClienteDB.mdf;Integrated Security=True")]
+        public string ClienteDBConnectionString {
+            get {
+                return ((string)(this["ClienteDBConnectionString"]));
             }
         }
     }
