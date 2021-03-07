@@ -1123,13 +1123,6 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public producto_facturaRow FindByrefProducto(string refProducto) {
-                return ((producto_facturaRow)(this.Rows.Find(new object[] {
-                            refProducto})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 producto_facturaDataTable cln = ((producto_facturaDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1165,10 +1158,7 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes {
                 base.Columns.Add(this.columnprecio);
                 this.columndescripcion = new global::System.Data.DataColumn("descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescripcion);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnrefProducto}, true));
                 this.columnrefProducto.AllowDBNull = false;
-                this.columnrefProducto.Unique = true;
                 this.columnrefProducto.MaxLength = 50;
                 this.columnrefFactura.MaxLength = 100;
                 this.columndescripcion.MaxLength = 50;
@@ -3609,14 +3599,6 @@ SELECT refProducto, refFactura, cantidad, precio, descripcion FROM producto_fact
                 }
             }
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string refFactura, global::System.Nullable<int> cantidad, global::System.Nullable<double> precio, string descripcion, string Original_refProducto, string Original_refFactura, global::System.Nullable<int> Original_cantidad, global::System.Nullable<double> Original_precio, string Original_descripcion) {
-            return this.Update(Original_refProducto, refFactura, cantidad, precio, descripcion, Original_refProducto, Original_refFactura, Original_cantidad, Original_precio, Original_descripcion);
-        }
     }
     
     /// <summary>
@@ -3762,7 +3744,7 @@ SELECT refProducto, refFactura, cantidad, precio, descripcion FROM producto_fact
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        producto_factura.refProducto, producto_factura.descripcion, producto_factura.cantidad, producto_factura.precio, factura.fecha, producto_factura.refFactura, cliente.cif, cliente.nombre, cliente.direccion
@@ -3789,6 +3771,16 @@ FROM            cliente INNER JOIN
 WHERE        (factura.refFactura = @refFactura)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refFactura", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "refFactura", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT        producto_factura.refProducto, producto_factura.descripcion, producto_factura.cantidad, producto_factura.precio, factura.fecha, producto_factura.refFactura, cliente.cif, cliente.nombre, cliente.direccion
+FROM            cliente INNER JOIN
+                         factura ON cliente.cif = factura.cif1 INNER JOIN
+                         producto_factura ON factura.refFactura = producto_factura.refFactura
+WHERE        (factura.fecha BETWEEN @fecha1 AND @fecha2)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha1", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fecha2", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "fecha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3830,6 +3822,29 @@ WHERE        (factura.refFactura = @refFactura)";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(refFactura));
+            }
+            ClienteDBDataSet.DetalladoDataTable dataTable = new ClienteDBDataSet.DetalladoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual ClienteDBDataSet.DetalladoDataTable ObtenerFechas(string fecha1, string fecha2) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((fecha1 == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(fecha1));
+            }
+            if ((fecha2 == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(fecha2));
             }
             ClienteDBDataSet.DetalladoDataTable dataTable = new ClienteDBDataSet.DetalladoDataTable();
             this.Adapter.Fill(dataTable);

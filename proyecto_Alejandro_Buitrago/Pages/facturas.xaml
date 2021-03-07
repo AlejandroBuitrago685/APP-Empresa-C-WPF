@@ -19,18 +19,18 @@
                 <Button Height="50" Width="200" Content="Por Nº Factura" Margin="20" Click="Button_Click_2"/>
             </StackPanel>
 
-            <StackPanel x:Name="PorCif" Margin="80,0,0,0" Width="170" HorizontalAlignment="Left">
+            <StackPanel x:Name="PorCif" Margin="75,0,0,0" Width="170" HorizontalAlignment="Left">
                 <TextBox x:Name="nCif"/>
-                <Button Height="20" Width="50" Content="Aceptar" Margin="10"/>
+                <Button Height="20" Width="50" Content="Aceptar" Margin="10" Click="Button_Click_3"/>
             </StackPanel>
             <StackPanel x:Name="porFecha" Margin="0,-57,0,0" Width="170" HorizontalAlignment="Center">
                 <DatePicker x:Name="fecha1" Margin="5"/>
                 <DatePicker x:Name="fecha2" Margin="5"/>
-                <Button Height="20" Width="50" Content="Aceptar" Margin="10"/>
+                <Button Height="20" Width="50" Content="Aceptar" Margin="10" Click="Button_Click_5"/>
             </StackPanel>
             <StackPanel x:Name="porFactura" Margin="0,-150,70,0" Width="170" HorizontalAlignment="Right" Height="52">
                 <TextBox x:Name="nFactura"/>
-                <Button Height="20" Width="50" Content="Aceptar" Margin="10"/>
+                <Button Height="20" Width="50" Content="Aceptar" Margin="10" Click="Button_Click_4"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

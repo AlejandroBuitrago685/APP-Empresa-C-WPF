@@ -4,6 +4,7 @@ using proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes.ClienteDBDataSetTab
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes
     {
         private static facturaTableAdapter facturaAdapter = new facturaTableAdapter();
         private static clienteTableAdapter clienteAdapter = new clienteTableAdapter();
+        private static detalleAdapter detalleAdapter = new detalleAdapter();
         private static producto_facturaTableAdapter producto_facturaAdapter = new producto_facturaTableAdapter();
 
         public static void AddCliente(Client cliente)
@@ -30,6 +32,21 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes
                 producto_facturaAdapter.Insert(p.referencia,reffactura, p.cantidad, p.precio, p.descripcion);
             }
            
+        }
+
+        public static DataTable ObtenerNFactura (string nfactura)
+        {
+            return detalleAdapter.GetRefFactura(nfactura);
+        }
+
+        public static DataTable ObtenerRangoFechas(DateTime fecha1, DateTime fecha2)
+        {
+            return detalleAdapter.ObtenerFechas(fecha1.ToString(), fecha2.ToString());
+        }
+
+        public static DataTable ObtenerPorCif(string cif)
+        {
+            return detalleAdapter.GetCIF(cif);
         }
     }
 

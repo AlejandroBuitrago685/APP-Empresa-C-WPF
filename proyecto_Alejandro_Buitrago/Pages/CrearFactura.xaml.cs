@@ -1,6 +1,7 @@
 ﻿using proyecto_Alejandro_Buitrago.ClientClass;
 using proyecto_Alejandro_Buitrago.ProductClass;
 using proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes;
+using proyecto_Alejandro_Buitrago.Reports;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -54,41 +55,43 @@ namespace proyecto_Alejandro_Buitrago.Pages
         private void comboProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             producto = (Product)comboProductos.SelectedItem;
-            Cantidad.DataContext = producto;
         }
 
         private void Añadir_Click(object sender, RoutedEventArgs e)
         {
-            bool productoR = false;
-            Product product = (Product)comboProductos.SelectedItem;
-            Cantidad.DataContext = product;
-            listaProductos2.Add(product);
-            
-            if(product != null)
+            Product producto = (Product)comboProductos.SelectedItem;
+
+            if (!listaProductos2.Contains(producto))
             {
-                foreach (Product p in listaProductos2)
-                {
-                    if (p.referencia == product.referencia)
-                    {
-                        productoR = true;
-                        p.cantidad = p.cantidad + int.Parse(Cantidad.Text);
-                    }
-                }
-                if (!productoR)
-                {
-                    listaProductos2.Add(product);
-                }
+                producto.cantidad = int.Parse(Cantidad.Text);
+                listaProductos2.Add(producto);
+                MyDataGrid.Items.Refresh();
             }
-            comboProductos.SelectedIndex = -1;
-            MyDataGrid.Items.Refresh();
+            else
+            {
+                producto.cantidad = producto.cantidad + int.Parse(Cantidad.Text);
+                MyDataGrid.Items.Refresh();
+            }
         }
 
         private void Crear_Click(object sender, RoutedEventArgs e)
         {
             if(listaProductos2.Count>0 && nFactura.Text != "" && client != null)
             {
+                string nFactura2 = nFactura.Text;
+
                 ClientesDBHandler.AddCliente(client);
                 ClientesDBHandler.AddFactura(client, listaProductos2, nFactura.Text);
+
+                
+                ReportPreviewCreado reportPreview = new ReportPreviewCreado();
+                bool okQuery = reportPreview.GenerarInforme(nFactura2);
+
+                if (okQuery)
+                {
+                    reportPreview.Show();
+                }
+
             }
         }
     }
