@@ -49,9 +49,9 @@ namespace proyecto_Alejandro_Buitrago.Reports
         {
             DataTable informe = ClientesDBHandler.ObtenerNFactura(factura);
             ReportDataSource rds = new ReportDataSource();
-            rds.Name = "DatosInforme";
+            rds.Name = "DatosFormulario";
             rds.Value = informe;
-            myReportView.LocalReport.ReportPath = "../../Reports/InformePorFactura.rdlc";
+            myReportView.LocalReport.ReportPath = "../../Reports/InformeGenerado.rdlc";
             myReportView.LocalReport.DataSources.Add(rds);
             myReportView.RefreshReport();
 

@@ -227,7 +227,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\InformeGenerado.rdlc" />
     <EmbeddedResource Include="Reports\InformePorCif.rdlc" />
-    <EmbeddedResource Include="Reports\InformePorFactura.rdlc" />
     <EmbeddedResource Include="Reports\InformePorFechas.rdlc" />
     <None Include="packages.config" />
     <None Include="ProjectDB\SQLData\Clientes\ClienteDBDataSet.xsc">
