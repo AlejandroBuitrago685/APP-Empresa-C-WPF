@@ -119,6 +119,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             else
             {
                 MessageBox.Show("Escribe un CIF válido");
+                nCif.BorderBrush = new SolidColorBrush(Colors.Red);
             }
 
 
@@ -145,6 +146,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             else
             {
                 MessageBox.Show("Escribe un nº de factura válido");
+                nFactura.BorderBrush = new SolidColorBrush(Colors.Red);
             }
         }
 
@@ -170,6 +172,8 @@ namespace proyecto_Alejandro_Buitrago.Pages
             else
             {
                 MessageBox.Show("Necesario seleccionar 2 fechas");
+                fecha1.BorderBrush = new SolidColorBrush(Colors.Red);
+                fecha2.BorderBrush = new SolidColorBrush(Colors.Red);
             }
         }
     }

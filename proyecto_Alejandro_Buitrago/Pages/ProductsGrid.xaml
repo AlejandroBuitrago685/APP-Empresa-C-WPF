@@ -35,7 +35,7 @@
                 </DataGridTemplateColumn>
 
                 <DataGridTextColumn Header="Referencia" Binding="{Binding referencia}"/>
-                <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}"/>
+                <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}" x:Name="TipoColumn"/>
                 <DataGridTextColumn Header="Madera" Binding="{Binding madera}"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding medida}"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding descripcion}"/>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private Product producto;
         Client client;
+        private Regex valCantidad = new Regex(@"^\d+$");
         ProductHandler productHandler;
         ObservableCollection<Product> listaProductos;
         ObservableCollection<Product> listaProductos2;
@@ -41,6 +43,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             InitCategoryCombo();
             listaProductos2 = new ObservableCollection<Product>();
             MyDataGrid.ItemsSource = listaProductos2;
+            Warning.Visibility = Visibility.Hidden;
 
         }
         private void InitCategoryCombo()
@@ -59,40 +62,115 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void Añadir_Click(object sender, RoutedEventArgs e)
         {
-            Product producto = (Product)comboProductos.SelectedItem;
+            
 
-            if (!listaProductos2.Contains(producto))
+            if (valCantidad.IsMatch(Cantidad.Text) && comboProductos.SelectedIndex >= 0)
             {
-                producto.cantidad = int.Parse(Cantidad.Text);
-                listaProductos2.Add(producto);
-                MyDataGrid.Items.Refresh();
+                Product producto = (Product)comboProductos.SelectedItem;
+                if (!listaProductos2.Contains(producto))
+                {
+                    producto.cantidad = int.Parse(Cantidad.Text);
+                    listaProductos2.Add(producto);
+                    MyDataGrid.Items.Refresh();
+                }
+                else
+                {
+                    producto.cantidad = producto.cantidad + int.Parse(Cantidad.Text);
+                    MyDataGrid.Items.Refresh();
+                }
             }
             else
             {
-                producto.cantidad = producto.cantidad + int.Parse(Cantidad.Text);
-                MyDataGrid.Items.Refresh();
+                Warning.Visibility = Visibility.Visible;
+                Warning.Text = "Seleccione un producto e introduzca un valor numérico";
             }
+
+            
         }
 
         private void Crear_Click(object sender, RoutedEventArgs e)
         {
-            if(listaProductos2.Count>0 && nFactura.Text != "" && client != null)
+            if(Validation())
             {
                 string nFactura2 = nFactura.Text;
 
-                ClientesDBHandler.AddCliente(client);
+
+                if (!ClientesDBHandler.ExisteCIF(client.cif))
+                {
+                    ClientesDBHandler.AddCliente(client);
+                }
+
                 ClientesDBHandler.AddFactura(client, listaProductos2, nFactura.Text);
 
-                
                 ReportPreviewCreado reportPreview = new ReportPreviewCreado();
                 bool okQuery = reportPreview.GenerarInforme(nFactura2);
 
                 if (okQuery)
                 {
+                    MessageBox.Show("Factura creada correctamente correctamente",
+                                "ATENCIÓN", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     reportPreview.Show();
+
                 }
 
             }
+            else
+            {
+                Warning.Visibility = Visibility.Visible;
+            }
+        }
+
+        private bool Validation()
+        {
+            bool validacion = false;
+
+            foreach (UIElement element in clientGrid.Children)
+            {
+                if (element is TextBox)
+                {
+                    TextBox textBox = (TextBox)element;
+                    if (textBox.Text.Equals(""))
+                    {
+                        textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                        validacion = false;
+                    }
+                    else
+                    {
+                        textBox.BorderBrush = new SolidColorBrush(Colors.LightGray);
+                    }
+                }
+            }
+
+            if (nFactura.Text == "")
+            {
+                Warning.Text = "Introduzca un número de factura";
+                nFactura.BorderBrush = new SolidColorBrush(Colors.Red);
+                validacion = false;
+            }
+            else if (MyDataGrid.Items.Count <= 0)
+            {
+                Warning.Text = "Seleccione al menos un producto";
+                comboProductos.BorderBrush = new SolidColorBrush(Colors.Red);
+                Cantidad.BorderBrush = new SolidColorBrush(Colors.Red);
+                MyDataGrid.BorderBrush = new SolidColorBrush(Colors.Red);
+                validacion = false;
+            }
+            else if (client == null)
+            {
+                validacion = false;
+            }
+            else if (ClientesDBHandler.ExisteFactura(nFactura.Text))
+            {
+                validacion = false;
+                Warning.Text = "Ya existe una factura con esa referencia";
+            }
+            else
+            {
+                validacion = true;
+            }
+
+            return validacion;
         }
     }
 }

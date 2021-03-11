@@ -48,6 +48,40 @@ namespace proyecto_Alejandro_Buitrago.ProjectDB.SQLData.Clientes
         {
             return detalleAdapter.GetCIF(cif);
         }
+
+        public static bool ExisteCIF(string cif)
+        {
+            bool existe = false;
+
+            DataTable clientes = clienteAdapter.GetData();
+
+            foreach (DataRow cliente in clientes.Rows)
+            {
+                if(cliente[0].ToString() == cif)
+                {
+                    existe = true;
+                }
+            }
+
+            return existe;
+        }
+
+        public static bool ExisteFactura(string referencia)
+        {
+            bool existe = false;
+
+            DataTable factura = clienteAdapter.GetData();
+
+            foreach (DataRow refer in factura.Rows)
+            {
+                if (refer[0].ToString().Equals(referencia))
+                {
+                    existe = true;
+                }
+            }
+
+            return existe;
+        }
     }
 
 

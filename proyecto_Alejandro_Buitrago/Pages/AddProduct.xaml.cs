@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,8 +33,12 @@ namespace proyecto_Alejandro_Buitrago.Pages
         public ProductHandler productHandler1;
         public Product product1;
         int posicion;
+        private Regex valPrecio = new Regex(@"^\d*\,?\d*$");
+        private Regex valStock = new Regex(@"^\d+$");
+        private Regex Date = new Regex(@"^(([0-2]\d|[3][0-1])\/([0]\d|[1][0-2])\/[2][0]\d{2})$|^(([0-2]\d|[3][0-1])\/([0]\d|[1][0-2])\/[2][0]\d{2}\s([0-1]\d|[2][0-3])\:[0-5]\d\:[0-5]\d)$");
         public bool modificacion;
         public bool validacion = false;
+        bool contiene = false;
 
         public AddProduct(String tituloPrincipal, ProductHandler productHandler, Product product, int pos)
         {
@@ -47,6 +52,8 @@ namespace proyecto_Alejandro_Buitrago.Pages
             InitCategoriaCMB();
             modificacion = true;
             Ref.IsEnabled = false;
+            Fecha.SelectedDate = product.fecha;
+            Precio.Text = Precio.Text.Replace(".", ",");
             brandCheck.IsEnabled = false;
             medidaCheck.IsEnabled = false;
             categoryCheck.IsEnabled = false;
@@ -160,6 +167,8 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     XMLHandler.ModifyProduct(product1);
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
                     ImageHandler.ModifyImage(product1.referencia, (BitmapImage)myImage.Source);
+                    MessageBox.Show("Producto modificado correctamente",
+                                "ATENCIÓN", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
                     if (product1.publish)
@@ -167,7 +176,10 @@ namespace proyecto_Alejandro_Buitrago.Pages
                         projectDBHandler.UpdateDB(product1.referencia, product1.descripcion, product1.medida, product1.precio, product1.fecha, product1.stock, product1.tipo, product1.madera, (BitmapImage)myImage.Source);
                     }
 
+                    MainWindow.myNavigationFrame.NavigationService.Navigate(new ProductsGrid(productHandler1));
+
                 }
+
                 else
                 {
                     String tipo = null;
@@ -221,6 +233,9 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     String referencia = Ref.Text;
                     Product product;
 
+                    MessageBox.Show("Producto añadido correctamente",
+                                "ATENCIÓN", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     MessageBoxResult resultado = MessageBox.Show("¿Quiere añadir el producto a la base de datos?",
                                 "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
@@ -254,13 +269,38 @@ namespace proyecto_Alejandro_Buitrago.Pages
         public void Validation()
         {
 
+            ObtenerReferencia();
+            foreach (UIElement element in productGrid.Children)
+                {
+                    if (element is TextBox)
+                    {
+                        TextBox textBox = (TextBox)element;
+                        if (textBox.Text.Equals(""))
+                        {
+                            textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                            validacion = true;
+                        }
+                        else
+                        {
+                            textBox.BorderBrush = new SolidColorBrush(Colors.LightGray);
+                        }
+                    }
+                    if (element is ComboBox)
+                    {
+                        ComboBox combo = (ComboBox)element;
+                        if (combo.Text.Equals(""))
+                        {
+                            combo.BorderBrush = new SolidColorBrush(Colors.Red);
+                            validacion = true;
+                        }
+                        else
+                        {
+                            combo.BorderBrush = new SolidColorBrush(Colors.LightGray);
+                        }
+                    }
+                }
 
-
-            if (Ref.Text.Length == 0 || Descripcion.Text.Length == 0 || Precio.Text.Length == 0 || Stock.Text.Length == 0 || Fecha.Text.Length == 0)
-            {
-                validacion = true;
-            }
-            else if ((bool)categoryCheck.IsChecked & (brandBox.Text.Length == 0 || medidaBox.Text.Length == 0 || categoryBox.Text.Length == 0))
+            if ((bool)categoryCheck.IsChecked & (brandBox.Text.Length == 0 || medidaBox.Text.Length == 0 || categoryBox.Text.Length == 0))
             {
                 validacion = true;
             }
@@ -272,15 +312,36 @@ namespace proyecto_Alejandro_Buitrago.Pages
             {
                 validacion = true;
             }
-            else if (TipoCMB.SelectedIndex < 0 & MarcaCMB.SelectedIndex < 0 & MedidaCMB.SelectedIndex < 0)
-            {
-                validacion = true;
-            }
+
             else if (Precio.Text.Contains("."))
             {
-
                 validacion = true;
                 Warning.Text = "Formato inválido en el precio, introduzca: (X,X)";
+                Precio.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+
+            else if (!valPrecio.IsMatch(Precio.Text))
+            {
+                validacion = true;
+                Warning.Text = "Formato inválido en el precio, introduzca valores numéricos";
+                Precio.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+
+            else if (!valStock.IsMatch(Stock.Text))
+            {
+                validacion = true;
+                Warning.Text = "Formato inválido en el stock, introduzca valores enteros";
+                Stock.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            else if (contiene) {
+                validacion = true;
+                Warning.Text = "Referencia ya existente";
+                Ref.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            else if (Fecha.Text == "" || !Date.IsMatch(Fecha.Text))
+            {
+                Warning.Text = "Fecha o formato no válido";
+                Fecha.BorderBrush = new SolidColorBrush(Colors.Red);
             }
 
             else
@@ -288,6 +349,23 @@ namespace proyecto_Alejandro_Buitrago.Pages
                 validacion = false;
             }
         }
+
+        public bool ObtenerReferencia()
+        {
+            
+            var listaCategorias = xml.Root.Elements("Tipo").Elements("Madera").Elements("Producto").Attributes("ProductRef");
+            foreach (XAttribute a in listaCategorias)
+            {
+                if(a.Value == Ref.Text)
+                {
+                    contiene = true;
+                    break;
+                }
+            }
+            return contiene;
+        }
+
+
 
         private void añadirImagen_Click(object sender, RoutedEventArgs e)
         {
@@ -302,21 +380,21 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void borrarImagen_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBoxResult resultado = MessageBox.Show("¿Seguro que quiere borrar la imagen del producto?",
+            if (myImage.Source != null)
+            {
+                MessageBoxResult resultado = MessageBox.Show("¿Seguro que quiere borrar la imagen del producto?",
                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
+                switch (resultado)
+                {
+                    case MessageBoxResult.Yes:
 
-            switch (resultado)
-            {
-                case MessageBoxResult.Yes:
+                        LocalImageDBHandler.removeDataFromDB(product1.referencia);
+                        myImage.Source = ImageHandler.LoadDefaultImage();
+                        break;
 
-                    LocalImageDBHandler.removeDataFromDB(product1.referencia);
-                    myImage.Source = ImageHandler.LoadDefaultImage();
-                    break;
-
+                }
             }
-
         }
     }
 }

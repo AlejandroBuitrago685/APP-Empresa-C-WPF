@@ -111,22 +111,47 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Product product = (Product)MyDataGrid.SelectedItem;
-            MainWindow.myNavigationFrame.NavigationService.Navigate(new ModydDelete(productHandler));
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere editar el producto?",
+                               "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+
+            switch (resultado)
+            {
+                case MessageBoxResult.Yes:
+                    Product product = (Product)MyDataGrid.SelectedItem;
+                    int pos = MyDataGrid.SelectedIndex;
+                    MainWindow.myNavigationFrame.NavigationService.Navigate(new AddProduct("MODIFICAR PRODUCTO", productHandler, product, pos));
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
+            }
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Product product = (Product)MyDataGrid.SelectedItem;
-            XMLHandler.DeleteProduct(product.referencia);
-            UpdateProductList();
-            LocalImageDBHandler.removeDataFromDB(product.referencia);
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere borrar este producto? \n Los cambios son irreversibles",
+                                "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            switch (resultado)
+            {
+                case MessageBoxResult.Yes:
+
+                    Product product = (Product)MyDataGrid.SelectedItem;
+                    XMLHandler.DeleteProduct(product.referencia);
+                    UpdateProductList();
+                    LocalImageDBHandler.removeDataFromDB(product.referencia);
+                    break;
+
+                case MessageBoxResult.Cancel:
+                    break;
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
-            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere borrar todo este tipo?",
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere borrar todo este tipo? \n Los cambios son irreversibles",
                                 "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
 

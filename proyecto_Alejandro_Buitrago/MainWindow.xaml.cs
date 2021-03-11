@@ -2,6 +2,7 @@
 using proyecto_Alejandro_Buitrago.ProductClass;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,27 @@ namespace proyecto_Alejandro_Buitrago
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             MyNavigationFrame.NavigationService.Navigate(new facturas());
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que quiere salir?",
+                               "ATENCIÓN", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            switch (resultado)
+            {
+                case MessageBoxResult.Yes:
+                    
+                    break;
+
+                case MessageBoxResult.No:
+                    e.Cancel = true;
+                    break;
+            }
+            
+                // No cierro el form
+               
+            base.OnClosing(e);
         }
     }
 }
