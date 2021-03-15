@@ -78,6 +78,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     producto.cantidad = producto.cantidad + int.Parse(Cantidad.Text);
                     MyDataGrid.Items.Refresh();
                 }
+                Warning.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -107,7 +108,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
                 if (okQuery)
                 {
-                    MessageBox.Show("Factura creada correctamente correctamente",
+                    MessageBox.Show("Factura creada correctamente",
                                 "ATENCIÓN", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     reportPreview.Show();

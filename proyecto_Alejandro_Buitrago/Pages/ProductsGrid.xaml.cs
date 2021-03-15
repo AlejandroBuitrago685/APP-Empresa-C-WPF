@@ -142,6 +142,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     XMLHandler.DeleteProduct(product.referencia);
                     UpdateProductList();
                     LocalImageDBHandler.removeDataFromDB(product.referencia);
+                    product.publish = false;
                     break;
 
                 case MessageBoxResult.Cancel:
@@ -163,6 +164,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     XMLHandler.DeleteType(product.tipo);
                     UpdateProductList();
                     MessageBox.Show("Tipo borrado con éxito");
+                    product.publish = false;
                     break;
 
                 case MessageBoxResult.Cancel:

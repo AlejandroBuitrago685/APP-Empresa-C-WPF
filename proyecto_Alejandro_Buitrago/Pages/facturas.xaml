@@ -6,17 +6,19 @@
       xmlns:local="clr-namespace:proyecto_Alejandro_Buitrago.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="facturas"
+      Title="Facturas"
       Background="White">
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-        <StackPanel Orientation="Vertical" Width="801">
-            <Button x:Name="Crear" Height="50" Width="200" Content="Crear factura" Margin="20" Click="Crear_Click"/>
-            <Button x:Name="Consulta"  Height="50" Width="200" Content="Consultar facturas" Margin="20" Click="Consulta_Click"/>
+
+        <StackPanel Orientation="Vertical" Width="801" HorizontalAlignment="Center">
+            <Label Content="GESTIÓN DE FACTURAS" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold"/>
+            <Button x:Name="Crear" Height="50" Width="200" Content="Crear factura" Margin="20" Click="Crear_Click" Style="{StaticResource botonPrincipal}"/>
+            <Button x:Name="Consulta"  Height="50" Width="200" Content="Consultar facturas" Margin="20" Click="Consulta_Click" Style="{StaticResource botonPrincipal}"/>
             <StackPanel x:Name="Menu" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Height="50" Width="200" Content="Por CIF/DNI Cliente" Margin="20" Click="Button_Click"/>
-                <Button Height="50" Width="200" Content="Por Fechas" Margin="20" Click="Button_Click_1"/>
-                <Button Height="50" Width="200" Content="Por Nº Factura" Margin="20" Click="Button_Click_2"/>
+                <Button Height="50" Width="200" Content="Por CIF/DNI Cliente" Margin="20" Click="Button_Click" Style="{StaticResource botonPrincipal}"/>
+                <Button Height="50" Width="200" Content="Por Fechas" Margin="20" Click="Button_Click_1" Style="{StaticResource botonPrincipal}"/>
+                <Button Height="50" Width="200" Content="Por Nº Factura" Margin="20" Click="Button_Click_2" Style="{StaticResource botonPrincipal}"/>
             </StackPanel>
 
             <StackPanel x:Name="PorCif" Margin="75,0,0,0" Width="170" HorizontalAlignment="Left">

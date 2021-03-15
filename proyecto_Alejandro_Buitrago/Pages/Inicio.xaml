@@ -13,5 +13,7 @@
         <Label Content="BIENVENIDO" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="20"/>
         <Label Content="Utilice el menú superior para navegar entre páginas" FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Center"/>
         <Label Content="Desarrollado por: Alejandro Buitrago." FontWeight="DemiBold" FontSize="20" HorizontalAlignment="Center" Margin="10" />
+        <Image Source="../Images/OnlineWoods.png" Width="150" Margin="20"/>
+        <Label Content="Online Woods, tu tienda de maderas Online de confianza." HorizontalAlignment="Center" FontSize="15" FontWeight="DemiBold" Foreground="RosyBrown"/>
     </StackPanel>
 </Page>

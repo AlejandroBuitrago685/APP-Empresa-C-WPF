@@ -6,7 +6,7 @@
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         xmlns:local="clr-namespace:proyecto_Alejandro_Buitrago.Reports"
         mc:Ignorable="d"
-        Title="InformeCIF" Height="450" Width="800">
+        Title="Informe por CIF/DNI" Height="450" Width="800">
     <Grid>
         <WindowsFormsHost>
             <rv:ReportViewer x:Name="myReportView"/>

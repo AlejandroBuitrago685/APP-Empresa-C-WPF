@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:proyecto_Alejandro_Buitrago"
         mc:Ignorable="d"
-        Title="MainWindow" Height="850.462" Width="999">
+        Title="Online Woods" Height="850.462" Width="999">
     <StackPanel>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue">
-            <Button Content="Inicio" Margin="20" Width="100" Height="30" Click="Button_Click"/>
-            <Button Content="Añadir" Margin="20" Width="100" Height="30" Click="Button_Click_2"/>
-            <Button Content="Mostrar" Margin="20" Width="100" Height="30" Click="Button_Click_1"/>
-            <Button Content="Facturas" Margin="20" Width="100" Height="30" Click="Button_Click_3"/>
+            <Button Content="Inicio" Margin="20" Width="100" Height="30" Click="Button_Click" Style="{StaticResource botonPrincipal}"/>
+            <Button Content="Añadir" Margin="20" Width="100" Height="30" Click="Button_Click_2" Style="{StaticResource botonPrincipal}"/>
+            <Button Content="Mostrar" Margin="20" Width="100" Height="30" Click="Button_Click_1" Style="{StaticResource botonPrincipal}"/>
+            <Button Content="Facturas" Margin="20" Width="100" Height="30" Click="Button_Click_3" Style="{StaticResource botonPrincipal}"/>
         </StackPanel>
         <Frame x:Name="MyNavigationFrame" NavigationUIVisibility="Hidden" Height="720" Margin="10"/>
     </StackPanel>

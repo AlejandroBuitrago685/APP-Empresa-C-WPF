@@ -155,6 +155,10 @@
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="XML\XMLHandler.cs" />
+    <Page Include="Diccionarios\Estilos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -267,6 +271,7 @@
     <Resource Include="XML\xml.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\OnlineWoods.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

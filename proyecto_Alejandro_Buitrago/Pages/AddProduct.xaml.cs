@@ -31,9 +31,9 @@ namespace proyecto_Alejandro_Buitrago.Pages
 
         private XDocument xml = XDocument.Load("../../XML/xml.xml");
         public ProductHandler productHandler1;
-        public Product product1;
+        public Product product;
         int posicion;
-        private Regex valPrecio = new Regex(@"^\d*\,?\d*$");
+        private Regex valPrecio = new Regex(@"^\d*\.?\d*$");
         private Regex valStock = new Regex(@"^\d+$");
         private Regex Date = new Regex(@"^(([0-2]\d|[3][0-1])\/([0]\d|[1][0-2])\/[2][0]\d{2})$|^(([0-2]\d|[3][0-1])\/([0]\d|[1][0-2])\/[2][0]\d{2}\s([0-1]\d|[2][0-3])\:[0-5]\d\:[0-5]\d)$");
         public bool modificacion;
@@ -46,17 +46,13 @@ namespace proyecto_Alejandro_Buitrago.Pages
             InitializeComponent();
             titulo.Text = tituloPrincipal;
             this.productHandler1 = productHandler;
-            this.product1 = product;
+            this.product = product;
             productGrid.DataContext = product;
             this.posicion = pos;
             InitCategoriaCMB();
             modificacion = true;
             Ref.IsEnabled = false;
             Fecha.SelectedDate = product.fecha;
-            Precio.Text = Precio.Text.Replace(".", ",");
-            brandCheck.IsEnabled = false;
-            medidaCheck.IsEnabled = false;
-            categoryCheck.IsEnabled = false;
             myImage.Source = ImageHandler.LoadImage(product.referencia);
 
         }
@@ -163,17 +159,15 @@ namespace proyecto_Alejandro_Buitrago.Pages
             {
                 if (modificacion)
                 {
+                        XMLHandler.ModifyProduct(product);
+                        //MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
+                        ImageHandler.ModifyImage(product.referencia, (BitmapImage)myImage.Source);
+                        MessageBox.Show("Producto modificado correctamente",
+                                    "ATENCIÓN", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    XMLHandler.ModifyProduct(product1);
-                    MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
-                    ImageHandler.ModifyImage(product1.referencia, (BitmapImage)myImage.Source);
-                    MessageBox.Show("Producto modificado correctamente",
-                                "ATENCIÓN", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
-                    if (product1.publish)
+                    if (product.publish)
                     {
-                        projectDBHandler.UpdateDB(product1.referencia, product1.descripcion, product1.medida, product1.precio, product1.fecha, product1.stock, product1.tipo, product1.madera, (BitmapImage)myImage.Source);
+                        projectDBHandler.UpdateDB(product.referencia, product.descripcion, product.medida, product.precio, product.fecha, product.stock, product.tipo, product.madera, (BitmapImage)myImage.Source);
                     }
 
                     MainWindow.myNavigationFrame.NavigationService.Navigate(new ProductsGrid(productHandler1));
@@ -229,7 +223,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                     String descripcion = Descripcion.Text;
                     DateTime fecha = (DateTime)Fecha.SelectedDate;
                     int stock = int.Parse(Stock.Text);
-                    float precio = float.Parse(Precio.Text);
+                    float precio = float.Parse(Precio.Text.Replace(".", ","));
                     String referencia = Ref.Text;
                     Product product;
 
@@ -258,7 +252,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                             break;
                     }
 
-                    MainWindow.myNavigationFrame.NavigationService.Navigate(new AddProduct());
+                    MainWindow.myNavigationFrame.NavigationService.Navigate(new Inicio());
 
                 }
 
@@ -313,10 +307,10 @@ namespace proyecto_Alejandro_Buitrago.Pages
                 validacion = true;
             }
 
-            else if (Precio.Text.Contains("."))
+           else if (Precio.Text.Contains(","))
             {
                 validacion = true;
-                Warning.Text = "Formato inválido en el precio, introduzca: (X,X)";
+                Warning.Text = "Formato inválido en el precio, introduzca: (X.X)";
                 Precio.BorderBrush = new SolidColorBrush(Colors.Red);
             }
 
@@ -333,7 +327,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                 Warning.Text = "Formato inválido en el stock, introduzca valores enteros";
                 Stock.BorderBrush = new SolidColorBrush(Colors.Red);
             }
-            else if (contiene) {
+            else if (contiene && !modificacion) {
                 validacion = true;
                 Warning.Text = "Referencia ya existente";
                 Ref.BorderBrush = new SolidColorBrush(Colors.Red);
@@ -342,6 +336,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
             {
                 Warning.Text = "Fecha o formato no válido";
                 Fecha.BorderBrush = new SolidColorBrush(Colors.Red);
+                
             }
 
             else
@@ -389,7 +384,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
                 {
                     case MessageBoxResult.Yes:
 
-                        LocalImageDBHandler.removeDataFromDB(product1.referencia);
+                        LocalImageDBHandler.removeDataFromDB(product.referencia);
                         myImage.Source = ImageHandler.LoadDefaultImage();
                         break;
 

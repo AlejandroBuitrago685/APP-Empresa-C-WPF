@@ -3,20 +3,19 @@
   <Tipo IdTipo="Liston">
     <Madera IdNombre="Abeto">
       <Producto ProductRef="423469" Medida="10x15cm" Descripcion="Liston de abeto de 10x15cm" Precio="2" Fecha="01/01/20" Stock="1" Publish="false" />
+      <Producto ProductRef="fqfqf" Medida="10x15cm" Descripcion="fqfqf" Precio="25" Fecha="15/03/21" Stock="23" Publish="false" />
     </Madera>
   </Tipo>
   <Tipo IdTipo="Tabla">
     <Madera IdNombre="Pino">
-      <Producto ProductRef="586469" Medida="100x50cm" Descripcion="Tabla de pino de 100x50cm" Precio="5.89" Fecha="19/01/21" Stock="5" Publish="false" />
-      <Producto ProductRef="427823" Medida="10x15cm" Descripcion="Tabla de pino de 10x15cm" Precio="4,99" Fecha="13/11/20" Stock="1" Publish="false" />
       <Producto ProductRef="563469" Medida="40x40cm" Descripcion="Tabla de pino de 40x40cm" Precio="4,7" Fecha="19/01/21" Stock="3" Publish="false" />
-      <Producto ProductRef="prueba 2" Medida="40x40cm" Descripcion="Producto de prueba" Precio="5" Fecha="18/02/21" Stock="25" Publish="true" />
+      <Producto ProductRef="427823" Medida="10x15cm" Descripcion="Tabla de pino de 10x15cm" Precio="4,99" Fecha="13/11/20" Stock="1" Publish="false" />
+      <Producto ProductRef="586469" Medida="100x50cm" Descripcion="Tabla de pino de 100x50cm" Precio="5,89" Fecha="19/01/21" Stock="50" Publish="false" />
     </Madera>
   </Tipo>
   <Tipo IdTipo="Lamina">
     <Madera IdNombre="Contrachapado">
       <Producto ProductRef="758423" Medida="10x15cm" Descripcion="Lamina de contrachapado de 10x15cm" Precio="2.2" Fecha="26/03/2020" Stock="3" Publish="false" />
-      <Producto ProductRef="prueba" Medida="10x15cm" Descripcion="whwheh" Precio="5" Fecha="23/02/21" Stock="5" Publish="true" />
     </Madera>
   </Tipo>
 </Almacen>

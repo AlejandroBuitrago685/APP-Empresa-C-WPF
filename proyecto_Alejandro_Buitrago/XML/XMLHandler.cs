@@ -44,7 +44,7 @@ namespace proyecto_Alejandro_Buitrago.XML
         private static void CrearProducto()
         {
             XElement xmlProduct = new XElement("Producto", new XAttribute("ProductRef", product.referencia), new XAttribute("Medida", product.medida),
-                 new XAttribute("Descripcion", product.descripcion), new XAttribute("Precio", product.precio.ToString().Replace('.',',')),
+                 new XAttribute("Descripcion", product.descripcion), new XAttribute("Precio", product.precio.ToString()),
                  new XAttribute("Fecha", product.fecha.ToString("dd/MM/yy")), new XAttribute("Stock", product.stock), new XAttribute("Publish", product.publish));
             xmlMadera.Add(xmlProduct);
         }
@@ -60,7 +60,7 @@ namespace proyecto_Alejandro_Buitrago.XML
                 product.referencia = productXML.Attribute("ProductRef").Value;
                 product.descripcion = productXML.Attribute("Descripcion").Value;
                 product.stock = int.Parse(productXML.Attribute("Stock").Value);
-                product.precio = float.Parse(productXML.Attribute("Precio").Value.Replace('.' , ','));
+                product.precio = float.Parse(productXML.Attribute("Precio").Value);
                 product.medida = productXML.Attribute("Medida").Value;
                 product.tipo = productXML.Parent.Parent.Attribute("IdTipo").Value;
                 product.madera = productXML.Parent.Attribute("IdNombre").Value;
@@ -187,6 +187,7 @@ namespace proyecto_Alejandro_Buitrago.XML
                     referencia.Parent.Remove();
                     break;
                 }
+                
             }
             SaveXML();
             AddXMLProduct(p);

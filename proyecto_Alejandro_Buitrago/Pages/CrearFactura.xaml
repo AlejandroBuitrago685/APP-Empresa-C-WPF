@@ -48,8 +48,8 @@
                 <DataGridTextColumn Header="Precio" Binding="{Binding precio}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="Warning" Text="Warning text" Foreground="Red" HorizontalAlignment="Center" FontSize="15" Margin="10" FontWeight="Bold"/>
-        <Button x:Name="Crear" Content="Crear" Width="100" Height="30" HorizontalAlignment="Center" Click="Crear_Click" FontSize="15"/>
+        <TextBlock x:Name="Warning" Text="Warning text" Foreground="Red" HorizontalAlignment="Center" FontSize="15" Margin="5" FontWeight="Bold"/>
+        <Button x:Name="Crear" Content="Crear" Width="100" Height="30" HorizontalAlignment="Center" Click="Crear_Click" FontSize="15" Style="{StaticResource botonPrincipal}"/>
 
     </StackPanel>
 </Page>
