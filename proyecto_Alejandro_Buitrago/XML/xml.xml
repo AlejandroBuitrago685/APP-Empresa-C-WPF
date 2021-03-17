@@ -3,7 +3,6 @@
   <Tipo IdTipo="Liston">
     <Madera IdNombre="Abeto">
       <Producto ProductRef="423469" Medida="10x15cm" Descripcion="Liston de abeto de 10x15cm" Precio="2" Fecha="01/01/20" Stock="1" Publish="false" />
-      <Producto ProductRef="fqfqf" Medida="10x15cm" Descripcion="fqfqf" Precio="25" Fecha="15/03/21" Stock="23" Publish="false" />
     </Madera>
   </Tipo>
   <Tipo IdTipo="Tabla">

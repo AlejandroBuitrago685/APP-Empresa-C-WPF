@@ -29,7 +29,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
     {
 
         ProductHandler productHandler;
-        private XDocument xml = XDocument.Load("../../XML/xml.xml");
+        private XDocument xml = XMLHandler.ReturnXDocument();
         ObservableCollection<Product> listaFiltrada;
         public Product product;
 

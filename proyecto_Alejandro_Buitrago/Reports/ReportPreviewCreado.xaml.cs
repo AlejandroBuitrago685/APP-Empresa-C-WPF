@@ -22,6 +22,9 @@ namespace proyecto_Alejandro_Buitrago.Reports
     /// </summary>
     public partial class ReportPreviewCreado : Window
     {
+
+        private static string Currentpath = Environment.CurrentDirectory;
+        private static string report = "Reports/InformeGenerado.rdlc";
         public ReportPreviewCreado()
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace proyecto_Alejandro_Buitrago.Reports
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DatosFormulario";
             rds.Value = informe;
-            myReportView.LocalReport.ReportPath = "../../Reports/InformeGenerado.rdlc";
+            myReportView.LocalReport.ReportPath = System.IO.Path.Combine(Currentpath, report);
             myReportView.LocalReport.DataSources.Add(rds);
             myReportView.RefreshReport();
 

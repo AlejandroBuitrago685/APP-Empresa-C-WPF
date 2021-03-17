@@ -7,11 +7,11 @@ using System.Windows;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("proyecto_Alejandro_Buitrago")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Online Woods")]
+[assembly: AssemblyDescription("Tienda de maderas online")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("proyecto_Alejandro_Buitrago")]
+[assembly: AssemblyCompany("Online Woods SL")]
+[assembly: AssemblyProduct("Online Woods Gestión")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

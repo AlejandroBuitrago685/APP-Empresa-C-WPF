@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -19,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using Path = System.IO.Path;
 
 namespace proyecto_Alejandro_Buitrago.Pages
 {
@@ -29,7 +31,7 @@ namespace proyecto_Alejandro_Buitrago.Pages
     {
 
 
-        private XDocument xml = XDocument.Load("../../XML/xml.xml");
+        private XDocument xml = XMLHandler.ReturnXDocument();
         public ProductHandler productHandler1;
         public Product product;
         int posicion;
@@ -39,6 +41,9 @@ namespace proyecto_Alejandro_Buitrago.Pages
         public bool modificacion;
         public bool validacion = false;
         bool contiene = false;
+        private static string XMLpath = Environment.CurrentDirectory;
+        private static string XMLname = "XML/xml.xml";
+        private static string documentoXML = Path.Combine(XMLpath, XMLname);
 
         public AddProduct(String tituloPrincipal, ProductHandler productHandler, Product product, int pos)
         {

@@ -3,6 +3,7 @@ using proyecto_Alejandro_Buitrago.ProductClass;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +18,25 @@ namespace proyecto_Alejandro_Buitrago.XML
         private static Product product;
         private static XElement xmlCategory;
         private static XElement xmlMadera;
+        private static string XMLpath = Environment.CurrentDirectory;
+        private static string XMLname = "XML/xml.xml";
+        private static string documentoXML = Path.Combine(XMLpath, XMLname);
 
         private static void LoadXML()
         {
-            xml = XDocument.Load("../../XML/xml.xml");
+            xml = XDocument.Load(documentoXML);
         }
 
         private static void SaveXML()
         {
-            xml.Save("../../XML/xml.xml");
+            xml.Save(documentoXML);
         }
+
+        public static XDocument ReturnXDocument()
+        {
+            return XDocument.Load(documentoXML);
+        }
+
         public static void AddXMLProduct(Product p)
         {
 

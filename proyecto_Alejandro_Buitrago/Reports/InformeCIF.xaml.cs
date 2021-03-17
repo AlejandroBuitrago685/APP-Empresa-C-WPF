@@ -22,6 +22,12 @@ namespace proyecto_Alejandro_Buitrago.Reports
     /// </summary>
     public partial class InformeCIF : Window
     {
+
+        private static string Currentpath = Environment.CurrentDirectory;
+        private static string reportRef = "Reports/InformeGenerado.rdlc";
+        private static string reportCif = "Reports/InformePorCif.rdlc";
+        private static string reportFechas = "Reports/InformePorFechas.rdlc";
+
         public InformeCIF()
         {
             InitializeComponent();
@@ -33,7 +39,7 @@ namespace proyecto_Alejandro_Buitrago.Reports
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DatosInforme";
             rds.Value = informe;
-            myReportView.LocalReport.ReportPath = "../../Reports/InformePorCif.rdlc";
+            myReportView.LocalReport.ReportPath = System.IO.Path.Combine(Currentpath, reportCif);
             myReportView.LocalReport.DataSources.Add(rds);
             myReportView.RefreshReport();
 
@@ -51,7 +57,7 @@ namespace proyecto_Alejandro_Buitrago.Reports
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DatosFormulario";
             rds.Value = informe;
-            myReportView.LocalReport.ReportPath = "../../Reports/InformeGenerado.rdlc";
+            myReportView.LocalReport.ReportPath = System.IO.Path.Combine(Currentpath, reportRef);
             myReportView.LocalReport.DataSources.Add(rds);
             myReportView.RefreshReport();
 
@@ -69,7 +75,7 @@ namespace proyecto_Alejandro_Buitrago.Reports
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DatosInforme";
             rds.Value = informe;
-            myReportView.LocalReport.ReportPath = "../../Reports/InformePorFechas.rdlc";
+            myReportView.LocalReport.ReportPath = System.IO.Path.Combine(Currentpath, reportFechas);
             myReportView.LocalReport.DataSources.Add(rds);
             myReportView.RefreshReport();
 
